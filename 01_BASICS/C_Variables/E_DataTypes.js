@@ -1,77 +1,131 @@
-/*
-* Data Types + Type System :
+// ============================================
+// JAVASCRIPT DATA TYPES - ADVANCED
+// ============================================
 
-* Primitives and reference :
-- Primitives ->  Built-in data types in programming lang that represent simple values.
-- When a variable holding a primitive value is copied, the result is a new, separate instance of that value,
- ensuring that changes to the copy do not affect the original.
-- Strings, number, boolean, null, undefined, symbol, bigint
+// THEORY: Primitive vs Reference Types
+// - PRIMITIVES: String, Number, Boolean, Undefined, Null, Symbol, BigInt
+//   → Copied by value (changes to copy don't affect original)
+// - REFERENCES: Object, Array, Function
+//   → Copied by reference (changes affect both original and copy)
 
-- Reference -> Reference data types (also known as non-primitive types or objects) do not store the actual data 
-directly within the variable. Instead, the variable holds a reference (an address) in memory to where the object's
-data is stored.
-- arrays, objects, functions
+// THEORY: Null vs Undefined
+// - undefined: Automatic default when variable not initialized
+// - null: Intentional absence of value (explicitly assigned)
 
+// THEORY: Symbol - Unique identifier
+// - Each Symbol is unique, even if created with same description
+// - Used for object keys to avoid property name conflicts
+// - Advanced topic, rarely used in beginner code
 
-- Null is the value given by user or you knowingly.
-- Undefined is something where a variable is created and value is nor initialized to it, The default value for it will be undefined.
+// THEORY: MAX_SAFE_INTEGER limit
+// - JavaScript numbers safely handle up to 2^53 - 1 (9,007,199,254,740,991)
+// - Beyond this, use BigInt for precision
 
-- symbol - unique immutable value
-let obj = {
-    uid: 1,
-    name: "Akhil",
-    age: 12,
-    email: "akhil@gmail.com"
+// THEORY: Dynamic Typing
+// - JavaScript allows variables to change types at runtime
+// - More flexible but can cause unexpected behavior if not careful
+
+// THEORY: Type Coercion
+// - JavaScript automatically converts types in operations
+// - "5" + 5 becomes "55" (string concatenation)
+// - "5" - 5 becomes 0 (numeric subtraction)
+
+// THEORY: Truthy vs Falsy
+// - Falsy values: 0, "", null, undefined, NaN, false
+// - Truthy values: Everything else
+// - Important in if statements and logical operations
+
+// ============================================
+// WORKING EXAMPLES
+// ============================================
+
+// Primitive vs Reference demonstration
+let primitiveA = 10;
+let primitiveB = primitiveA;
+primitiveB = 20;
+console.log("Primitive A:", primitiveA, "B:", primitiveB); // A: 10, B: 20 (independent)
+
+let refA = { value: 10 };
+let refB = refA;
+refB.value = 20;
+console.log("Ref A value:", refA.value, "B value:", refB.value); // Both: 20 (same object)
+
+// undefined vs null
+let notAssigned;
+console.log(notAssigned); // Output: undefined (automatic)
+
+let empty = null;
+console.log(empty); // Output: null (intentional)
+
+// Symbol - unique identifiers
+const sym1 = Symbol("id");
+const sym2 = Symbol("id");
+console.log(sym1 === sym2); // Output: false (each symbol is unique)
+
+// Using Symbol as object key
+const person = {
+  name: "John",
+  [sym1]: "unique-id-123"
+};
+console.log(person.name); // Output: John
+console.log(person[sym1]); // Output: unique-id-123
+
+// MAX_SAFE_INTEGER example
+console.log(Number.MAX_SAFE_INTEGER); // Output: 9007199254740991
+console.log(Number.MAX_SAFE_INTEGER + 1); // Output: 9007199254740992
+console.log(Number.MAX_SAFE_INTEGER + 2); // Output: 9007199254740992 (precision lost!)
+
+// Using BigInt for large numbers
+let bigNumber = BigInt(Number.MAX_SAFE_INTEGER) + 1n;
+console.log(bigNumber); // Output: 9007199254740992n (precise)
+console.log(typeof bigNumber); // Output: bigint
+
+// Type coercion examples
+console.log("10" + 5); // Output: "105" (string concatenation)
+console.log("10" - 5); // Output: 5 (numeric conversion)
+console.log("10" * "2"); // Output: 20 (numeric conversion)
+console.log(true + 1); // Output: 2 (true → 1)
+console.log(false + 1); // Output: 1 (false → 0)
+console.log(null + 1); // Output: 1 (null → 0)
+console.log(undefined + 1); // Output: NaN
+
+// Truthy and Falsy values
+const falsyValues = [0, "", null, undefined, NaN, false];
+const truthyValues = [1, "hello", [], {}, true];
+
+falsyValues.forEach((val, i) => {
+  if (val) console.log(i, "is truthy");
+  else console.log(i, "is falsy");
+});
+
+// Using falsy/truthy in practice
+function checkValue(val) {
+  if (val) {
+    console.log("Value is truthy");
+  } else {
+    console.log("Value is falsy");
+  }
 }
 
-let u1 = Symbol("uid");
-onj[u1] = "001";
+checkValue(0);        // Output: Value is falsy
+checkValue(1);        // Output: Value is truthy
+checkValue("");       // Output: Value is falsy
+checkValue("hello");  // Output: Value is truthy
 
-MAX_SAFE_INTEGER :
-Number.MAX_SAFE_INTEGER
+// Why typeof NaN is "number"
+console.log(typeof NaN); // Output: number (it's a failed number operation)
+console.log(typeof undefined); // Output: undefined
+console.log(typeof null); // Output: object (JavaScript quirk!)
 
-To obtain a bigger data type than this use bigInt.
-let a = 9007199254740991n;
-a + 3n
+// Dynamic typing example
+let variable = 42;
+console.log(typeof variable); // Output: number
 
-Dynamic Typing :
-- There is no static typing in JS.
-- We can change the data because we have dynamic data types
+variable = "now a string";
+console.log(typeof variable); // Output: string
 
-* Dynamic typing :
-- How it works: Type checking occurs during program execution (runtime). Variables can change their data type during runtime. 
-- Pros: More flexible and can allow for faster initial development since you don't need to declare variable types explicitly. 
-- Cons: Type errors are only found when the code is executed, which can lead to unexpected crashes and bugs later in development. 
-- Examples: Python, JavaScript, and Ruby. 
+variable = true;
+console.log(typeof variable); // Output: boolean
 
-* Static typing :
-- How it works: Type checking is performed before the program runs (compile time). Variable types are fixed and cannot change at runtime. 
-- Pros: Catches many errors early in the development process, leading to more robust and reliable code. 
-- Cons: Can be more verbose as it often requires explicit type declarations, and development can be slower initially. 
-- Examples: Java, C++, C#, and Go.cc
-
-
-* Type Coercion : 
-- Type coercion in JavaScript refers to the automatic or implicit conversion of values from one data type to another during an operation.
-- This happens when an operation involves different data types, and JavaScript attempts to make them compatible by converting one or more of the values. 
-
-* Truthy vs Falsy values :
-- In JavaScript, truthy and falsy values refer to how different data types are evaluated in a Boolean context, such as in if statements 
-or logical operations (&&, ||). When a non-Boolean value is used in such a context, JavaScript implicitly converts it to a Boolean true or false.
-- 0 false ""  null undefined NaN document.all
-- Example : 
-if(12) {
-
-}
-
-* Why typeof of NaN is number : 
-- Failed number operation
-
-* undefined vs null :
-undefined is default and null is given.
-- undefined is a primitive value automatically assigned by JavaScript in several scenarios.
-It signifies that a variable has been declared but has not yet been assigned a value. 
-- null is a primitive value that must be explicitly assigned by a developer.
-Meaning : It signifies the intentional absence of any object value. It is often used to indicate that a variable or property is declared and initialized, 
-but currently holds no meaningful value.
- */
+variable = { prop: "value" };
+console.log(typeof variable); // Output: object

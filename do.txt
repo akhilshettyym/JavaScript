@@ -1,8 +1,0 @@
-Here I have a set of files with .js format. But everything inside is commented out.
-But What I want is there are things which are helpful for me to learn things.
-I want you to segregate things in such a way that I have a simple brief description of it with an example.
-I want the theory part commented out and the working code part in pure js.
-It should be written in such a way that I should be able to recall things as soon as I read it.
-I want you to add things if there are any extra stuffs which you think I can make use of.
-So I want you to surf across web or whatever resources available and make this work.
-I want you to to edit every file and place it in the same file as you can see.

@@ -1,97 +1,85 @@
-/*
-JavaScript Object Properties
-An Object is an Unordered Collection of Properties
-Properties are the most important part of JavaScript objects.
+// CONCEPT: Object Properties - Accessing, modifying, and deleting properties
 
-Properties can be changed, added, deleted, and some are read only.
-
-Accessing JavaScript Properties
-The syntax for accessing the property of an object is:
-
-// objectName.property
-let age = person.age;
-or
-
-//objectName["property"]
-let age = person["age"];
-or
-
-//objectName[expression]
-let age = person[x];
-Examples
-person.firstname + " is " + person.age + " years old.";
-person["firstname"] + " is " + person["age"] + " years old.";
-let x = "firstname";
-let y = "age";
-person[x] + " is " + person[y] + " years old.";
-Adding New Properties
-You can add new properties to an existing object by simply giving it a value:
-
-Example
-person.nationality = "English";
-Property Default Values
-A value given to a property will be a default value for all objects created by the constructor:
-
-Example
-function Person(first, last, age, eyecolor) {
-  this.firstName = first;
-  this.lastName = last;
-  this.age = age;
-  this.eyeColor = eyecolor;
-  this.nationality = "English";
-}
-Deleting Properties
-The delete keyword deletes a property from an object:
-
-Example
 const person = {
   firstName: "John",
   lastName: "Doe",
-  age: 50,
-  eyeColor: "blue"
+  age: 30,
+  city: "New York"
 };
 
-delete person.age;
-or delete person["age"];
+// ACCESSING PROPERTIES
+console.log(person.firstName);         // "John" - dot notation
+console.log(person["firstName"]);      // "John" - bracket notation (needed for special chars/spaces)
 
-Example
-const person = {
-  firstName: "John",
-  lastName: "Doe",
-  age: 50,
-  eyeColor: "blue"
+// MODIFYING PROPERTIES
+person.age = 31;
+person["city"] = "Boston";
+console.log(person.age);               // 31
+console.log(person.city);              // "Boston"
+
+// ADDING NEW PROPERTIES
+person.email = "john@example.com";
+person["phone"] = "555-1234";
+console.log(person.email);             // "john@example.com"
+
+// DELETING PROPERTIES
+delete person.phone;
+console.log(person.phone);             // undefined
+
+// PROPERTY WITH SPECIAL CHARACTERS/SPACES (bracket notation required)
+const config = {};
+config["api-key"] = "secret123";
+config["max requests"] = 100;
+console.log(config["api-key"]);        // "secret123"
+
+// DYNAMIC PROPERTY NAMES
+const propName = "email";
+const value = "john@example.com";
+person[propName] = value;
+console.log(person.email);             // "john@example.com"
+
+// COMPUTED PROPERTY NAMES (ES6)
+const newObj = {
+  ["first" + "Name"]: "Jane"
 };
+console.log(newObj.firstName);         // "Jane"
 
-delete person["age"];
-Note:
-The delete keyword deletes both the value of the property and the property itself.
-
-After deletion, the property cannot be used before it is added back again.
-
-ADVERTISEMENT
-
-REMOVE ADS
-
-Nested Objects
-Property values in an object can be other objects:
-
-Example
-myObj = {
-  name:"John",
-  age:30,
-  myCars: {
-    car1:"Ford",
-    car2:"BMW",
-    car3:"Fiat"
+// NESTED PROPERTIES
+const employee = {
+  name: "Alice",
+  contact: {
+    email: "alice@example.com",
+    phone: "555-5678"
   }
-}
-You can access nested objects using the dot notation or the bracket notation:
+};
 
-Examples
-myObj.myCars.car2;
-myObj.myCars["car2"];
-myObj["myCars"]["car2"];
-let p1 = "myCars";
-let p2 = "car2";
-myObj[p1][p2];
-*/
+console.log(employee.contact.email);   // "alice@example.com"
+employee.contact.email = "alice.new@example.com";
+console.log(employee.contact.email);   // "alice.new@example.com"
+
+// PROPERTY EXISTENCE CHECK
+console.log("firstName" in person);    // true
+console.log("middleName" in person);   // false
+console.log(person.hasOwnProperty("firstName")); // true
+
+// GET ALL PROPERTIES
+console.log(Object.keys(person));      // array of property names
+console.log(Object.getOwnPropertyNames(person)); // similar to keys()
+
+// OBJECT DESCRIPTORS (Advanced)
+Object.defineProperty(person, "ssn", {
+  value: "123-45-6789",
+  writable: false,  // Cannot be changed
+  enumerable: false, // Won't show in Object.keys()
+  configurable: false // Cannot be deleted
+});
+
+console.log(person.ssn);               // "123-45-6789"
+person.ssn = "000-00-0000";  // Silently fails in non-strict mode
+console.log(person.ssn);               // Still "123-45-6789"
+
+// PROPERTY SHORTHAND (ES6)
+const firstName = "Bob";
+const lastName = "Smith";
+const person2 = { firstName, lastName };
+console.log(person2);                  // { firstName: "Bob", lastName: "Smith" }

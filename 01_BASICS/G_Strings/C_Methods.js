@@ -1,474 +1,181 @@
-/*
-JavaScript String Methods
-Basic String Methods
-Javascript strings are primitive and immutable: All string methods produce a new string without altering the original string.
+/* STRING METHODS: Essential methods for string manipulation */
+// Strings are immutable - methods return NEW strings
+// Common: slice, substring, toUpperCase, toLowerCase, trim, split, replace, includes
 
-String length
-String charAt()
-String charCodeAt()
-String codePointAt()
-String concat()
-String at()
-String [ ]
-String slice()
-String substring()
-String substr()
-String toUpperCase()
-String toLowerCase()
-String isWellFormed()
-String toWellFormed()
-String trim()
-String trimStart()
-String trimEnd()
-String padStart()
-String padEnd()
-String repeat()
-String replace()
-String replaceAll()
-String split()
-See Also:
-String Tutorial
-String Search
-String Templates
-String Reference
-JavaScript String Length
-The length property returns the length of a string:
+// ============= CASE CONVERSION =============
+console.log("=== CASE CONVERSION ===");
 
-Example
-let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let length = text.length;
-Extracting String Characters
-There are 4 methods for extracting string characters:
+let text = "Hello World";
 
-The at(position) Method
-The charAt(position) Method
-The charCodeAt(position) Method
-Using property access [] like in arrays
-JavaScript String charAt()
-The charAt() method returns the character at a specified index (position) in a string:
+console.log("Original:", text);
+console.log("toUpperCase():", text.toUpperCase());     // HELLO WORLD
+console.log("toLowerCase():", text.toLowerCase());     // hello world
 
-Example
-let text = "HELLO WORLD";
-let char = text.charAt(0);
-JavaScript String charCodeAt()
-The charCodeAt() method returns the code of the character at a specified index in a string:
+// ============= EXTRACTING PARTS =============
+console.log("\n=== EXTRACTING PARTS ===");
 
-The method returns a UTF-16 code (an integer between 0 and 65535).
-
-Example
-let text = "HELLO WORLD";
-let char = text.charCodeAt(0);
-JavaScript codePointAt()
-Examples
-Get code point value at the first position in a string:
-
-let text = "HELLO WORLD";
-let code = text.codePointAt(0);
-JavaScript String at()
-ES2022 introduced the string method at():
-
-Examples
-Get the third letter of name:
-
-const name = "W3Schools";
-let letter = name.at(2);
-Get the third letter of name:
-
-const name = "W3Schools";
-let letter = name[2];
-The at() method returns the character at a specified index (position) in a string.
-
-The at() method is supported in all modern browsers since March 2022:
-
-Note
-The at() method is a new addition to JavaScript.
-
-It allows the use of negative indexes while charAt() do not.
-
-Now you can use myString.at(-2) instead of charAt(myString.length-2).
-Browser Support
-at() is an ES2022 feature.
-
-JavaScript 2022 is supported in all modern browsers since March 2022:
-
-Chrome
-92	Edge
-92	Firefox
-90	Safari
-15.4	Opera
-78
-Apr 2021	Jul 2021	Jul 2021	Mar 2022	Aug 2021
-Property Access [ ]
-Example
-let text = "HELLO WORLD";
-let char = text[0];
-Note
-Property access might be a little unpredictable:
-
-It makes strings look like arrays (but they are not)
-If no character is found, [ ] returns undefined, while charAt() returns an empty string.
-It is read only. str[0] = "A" gives no error (but does not work!)
-Example
-let text = "HELLO WORLD";
-text[0] = "A";    // Gives no error, but does not work
-JavaScript String concat()
-concat() joins two or more strings:
-
-Example
-let text1 = "Hello";
-let text2 = "World";
-let text3 = text1.concat(" ", text2);
-The concat() method can be used instead of the plus operator. These two lines do the same:
-
-Example
-text = "Hello" + " " + "World!";
-text = "Hello".concat(" ", "World!");
-Note
-All string methods return a new string. They don't modify the original string.
-
-Formally said:
-
-Strings are immutable: Strings cannot be changed, only replaced.
-
-Extracting String Parts
-There are 3 methods for extracting a part of a string:
-
-slice(start, end)
-substring(start, end)
-substr(start, length)
-JavaScript String slice()
-slice() extracts a part of a string and returns the extracted part in a new string.
-
-The method takes 2 parameters: start position, and end position (end not included).
-
-Example
-Slice out a portion of a string from position 7 to position 13:
-
-let text = "Apple, Banana, Kiwi";
-let part = text.slice(7, 13);
-Note
-JavaScript counts positions from zero.
-
-First position is 0.
-
-Second position is 1.
-
-Examples
-If you omit the second parameter, the method will slice out the rest of the string:
-
-let text = "Apple, Banana, Kiwi";
-let part = text.slice(7);
-If a parameter is negative, the position is counted from the end of the string:
-
-let text = "Apple, Banana, Kiwi";
-let part = text.slice(-12);
-This example slices out a portion of a string from position -12 to position -6:
-
-let text = "Apple, Banana, Kiwi";
-let part = text.slice(-12, -6);
-ADVERTISEMENT
-
-REMOVE ADS
-
-JavaScript String substring()
-substring() is similar to slice().
-
-The difference is that start and end values less than 0 are treated as 0 in substring().
-
-Example
 let str = "Apple, Banana, Kiwi";
-let part = str.substring(7, 13);
-If you omit the second parameter, substring() will slice out the rest of the string.
-
-JavaScript String substr()
-substr() is similar to slice().
-
-The difference is that the second parameter specifies the length of the extracted part.
-
-Warning
-The substr() method is removed (deprecated) in the latest JavaScript standard.
-
-Use substring() or slice() instead.
-
-Example
-let str = "Apple, Banana, Kiwi";
-let part = str.substr(7, 6);
-If you omit the second parameter, substr() will slice out the rest of the string.
-
-Example
-let str = "Apple, Banana, Kiwi";
-let part = str.substr(7);
-If the first parameter is negative, the position counts from the end of the string.
-
-Example
-let str = "Apple, Banana, Kiwi";
-let part = str.substr(-4);
-Converting to Upper and Lower Case
-A string is converted to upper case with toUpperCase():
-
-A string is converted to lower case with toLowerCase():
-
-JavaScript String toUpperCase()
-Example
-let text1 = "Hello World!";
-let text2 = text1.toUpperCase();
-JavaScript String toLowerCase()
-Example
-let text1 = "Hello World!";       // String
-let text2 = text1.toLowerCase();  // text2 is text1 converted to lower
-JavaScript String isWellFormed()
-The isWellFormed() method returns true if a string is well formed.
-
-Otherwise it returns false.
-
-A string is not well formed if it contains lone surrogates.
-
-Examples
-let text = "Hello world!";
-let result = text.isWellFormed();
-let text = "Hello World \uD800";
-let result = text.isWellFormed();
-Lone Surrogates
-A lone surrogate is a Unicode surrogate code point that is not part of a valid surrogate pair used to represent characters in UTF-16 encoding.
-
-JavaScript String toWellFormed()
-The String method toWellFormed() returns a new string where all "lone surrogates" are replaced with the Unicode replacement character (U+FFFD).
-
-Examples
-let text = "Hello World \uD800";
-let result = text.toWellFormed();
-JavaScript String trim()
-The trim() method removes whitespace from both sides of a string:
-
-Example
-let text1 = "      Hello World!      ";
-let text2 = text1.trim();
-JavaScript String trimStart()
-ECMAScript 2019 added the String method trimStart() to JavaScript.
-
-The trimStart() method works like trim(), but removes whitespace only from the start of a string.
-
-Example
-let text1 = "     Hello World!     ";
-let text2 = text1.trimStart();
-Browser Support
-trimStart() is an ECMAScript 2019 feature.
-
-ES2019 is supported in all modern browsers since January 2020:
-
-Chrome
-66	Edge
-79	Firefox
-61	Safari
-12	Opera
-50
-Apr 2018	Jan 2020	Jun 2018	Sep 2018	May 2018
-JavaScript String trimEnd()
-ECMAScript 2019 added the string method trimEnd() to JavaScript.
-
-The trimEnd() method works like trim(), but removes whitespace only from the end of a string.
-
-Example
-let text1 = "     Hello World!     ";
-let text2 = text1.trimEnd();
-Browser Support
-trimEnd() is an ECMAScript 2019 feature.
-
-ES2019 is supported in all modern browsers since January 2020:
-
-Chrome
-66	Edge
-79	Firefox
-61	Safari
-12	Opera
-50
-Apr 2018	Jan 2020	Jun 2018	Sep 2018	May 2018
-JavaScript String Padding
-ECMAScript 2017 added two new string methods to JavaScript: padStart() and padEnd() to support padding at the beginning and at the end of a string.
-
-JavaScript String padStart()
-The padStart() method pads a string from the start.
-
-It pads a string with another string (multiple times) until it reaches a given length.
-
-Examples
-Pad a string with "0" until it reaches the length 4:
-
-let text = "5";
-let padded = text.padStart(4,"0");
-Pad a string with "x" until it reaches the length 4:
-
-let text = "5";
-let padded = text.padStart(4,"x");
-Note
-The padStart() method is a string method.
-
-To pad a number, convert the number to a string first.
-
-See the example below.
-
-Example
-let numb = 5;
-let text = numb.toString();
-let padded = text.padStart(4,"0");
-Browser Support
-padStart() is an ECMAScript 2017 feature.
-
-ES2017 is supported in all modern browsers since September 2017:
-
-Chrome
-58	Edge
-15	Firefox
-52	Safari
-11	Opera
-45
-Apr 2017	Apr 2017	Mar 2017	Sep 2017	May 2017
-JavaScript String padEnd()
-The padEnd() method pads a string from the end.
-
-It pads a string with another string (multiple times) until it reaches a given length.
-
-Examples
-let text = "5";
-let padded = text.padEnd(4,"0");
-let text = "5";
-let padded = text.padEnd(4,"x");
-Note
-The padEnd() method is a string method.
-
-To pad a number, convert the number to a string first.
-
-See the example below.
-
-Example
-let numb = 5;
-let text = numb.toString();
-let padded = text.padEnd(4,"0");
-Browser Support
-padEnd() is an ECMAScript 2017 feature.
-
-ES2017 is supported in all modern browsers since September 2017:
-
-Chrome
-58	Edge
-15	Firefox
-52	Safari
-11	Opera
-45
-Apr 2017	Apr 2017	Mar 2017	Sep 2017	May 2017
-JavaScript String repeat()
-The repeat() method returns a string with a number of copies of a string.
-
-The repeat() method returns a new string.
-
-The repeat() method does not change the original string.
-
-Examples
-Create copies of a text:
-
-let text = "Hello world!";
-let result = text.repeat(2);
-let text = "Hello world!";
-let result = text.repeat(4);
-Syntax
-string.repeat(count)
-Parameters
-Parameter	Description
-count	Required.
-The number of copies wanted.
-Return Value
-Type	Description
-String	A new string containing the copies.
-Browser Support
-repeat() is an ES6 feature.
-
-ES6 is fully supported in all modern browsers since June 2017:
-
-Chrome
-51	Edge
-15	Firefox
-54	Safari
-10	Opera
-38
-May 2016	Apr 2017	Jun 2017	Sep 2016	Jun 2016
-Replacing String Content
-The replace() method replaces a specified value with another value in a string:
-
-Example
-let text = "Please visit Microsoft!";
-let newText = text.replace("Microsoft", "W3Schools");
-Note
-The replace() method does not change the string it is called on.
-
-The replace() method returns a new string.
-
-The replace() method replaces only the first match
-
-If you want to replace all matches, use a regular expression with the /g flag set. See examples below.
-
-By default, the replace() method replaces only the first match:
-
-Example
-let text = "Please visit Microsoft and Microsoft!";
-let newText = text.replace("Microsoft", "W3Schools");
-
-By default, the replace() method is case sensitive. Writing MICROSOFT (with upper-case) will not work:
-
-Example
-let text = "Please visit Microsoft!";
-let newText = text.replace("MICROSOFT", "W3Schools");
-
-To replace case insensitive, use a regular expression with an /i flag (insensitive):
-
-Example
-let text = "Please visit Microsoft!";
-let newText = text.replace(/MICROSOFT/i, "W3Schools");
-
-Note
-Regular expressions are written without quotes.
-
-To replace all matches, use a regular expression with a /g flag (global match):
-
-Example
-let text = "Please visit Microsoft and Microsoft!";
-let newText = text.replace(/Microsoft/g, "W3Schools");
-
-Note
-You will learn a lot more about regular expressions in the chapter JavaScript Regular Expressions.
-
-JavaScript String ReplaceAll()
-In 2021, JavaScript introduced the string method replaceAll():
-
-Example
-text = text.replaceAll("Cats","Dogs");
-text = text.replaceAll("cats","dogs");
-The replaceAll() method allows you to specify a regular expression instead of a string to be replaced.
-
-If the parameter is a regular expression, the global flag (g) must be set, otherwise a TypeError is thrown.
-
-Example
-text = text.replaceAll(/Cats/g,"Dogs");
-text = text.replaceAll(/cats/g,"dogs");
-Note
-replaceAll() is an ES2021 feature.
-
-replaceAll() does not work in Internet Explorer.
-
-Converting a String to an Array
-If you want to work with a string as an array, you can convert it to an array.
-
-JavaScript String split()
-A string can be converted to an array with the split() method:
-
-Example
-text.split(",")    // Split on commas
-text.split(" ")    // Split on spaces
-text.split("|")    // Split on pipe
-If the separator is omitted, the returned array will contain the whole string in index [0].
-
-If the separator is "", the returned array will be an array of single characters:
-
-Example
-text.split("")
-
-*/
+
+// slice(start, end): negative index counts from end
+console.log("slice(7, 13):", str.slice(7, 13));      // Banana
+console.log("slice(-4):", str.slice(-4));            // Kiwi
+console.log("slice(-12, -6):", str.slice(-12, -6));  // Banana
+
+// substring(start, end): like slice but no negative
+console.log("substring(7, 13):", str.substring(7, 13)); // Banana
+
+// substr(start, length) - DEPRECATED, avoid
+// console.log("substr(7, 6):", str.substr(7, 6)); // Banana
+
+// ============= FINDING STRINGS =============
+console.log("\n=== FINDING STRINGS ===");
+
+let searchText = "Hello, this is a test. This is great!";
+
+// indexOf(searchValue): returns first occurrence index
+console.log("indexOf('is'):", searchText.indexOf('is'));     // 10
+console.log("indexOf('test'):", searchText.indexOf('test'));   // 17
+
+// lastIndexOf(searchValue): returns last occurrence
+console.log("lastIndexOf('is'):", searchText.lastIndexOf('is')); // 26
+
+// includes(searchValue): true/false if found
+console.log("includes('test'):", searchText.includes('test'));   // true
+console.log("includes('xyz'):", searchText.includes('xyz'));     // false
+
+// startsWith(): check if string starts with
+console.log("startsWith('Hello'):", searchText.startsWith('Hello')); // true
+
+// endsWith(): check if string ends with
+console.log("endsWith('great!'):", searchText.endsWith('great!')); // true
+
+// ============= WHITESPACE MANAGEMENT =============
+console.log("\n=== WHITESPACE MANAGEMENT ===");
+
+let spacedText = "   Hello World   ";
+
+console.log("Original: '" + spacedText + "'");
+console.log("trim():", "'" + spacedText.trim() + "'");          // "Hello World"
+console.log("trimStart():", "'" + spacedText.trimStart() + "'"); // "Hello World   "
+console.log("trimEnd():", "'" + spacedText.trimEnd() + "'");     // "   Hello World"
+
+// ============= STRING REPLACEMENT =============
+console.log("\n=== STRING REPLACEMENT ===");
+
+let sentence = "I love cats and cats love me";
+
+// replace(old, new): replaces FIRST occurrence
+console.log("replace('cats', 'dogs'):", sentence.replace('cats', 'dogs'));
+// "I love dogs and cats love me"
+
+// replaceAll(old, new): replaces ALL occurrences
+console.log("replaceAll('cats', 'dogs'):", sentence.replaceAll('cats', 'dogs'));
+// "I love dogs and dogs love me"
+
+// Using regular expressions
+console.log("replace with regex:", sentence.replace(/cats/g, 'dogs'));
+
+// ============= SPLITTING STRINGS =============
+console.log("\n=== SPLITTING STRINGS ===");
+
+let csv = "apple,banana,cherry,date";
+
+// split(separator): convert string to array
+let fruits = csv.split(',');
+console.log("split(','):", fruits);
+// ['apple', 'banana', 'cherry', 'date']
+
+// split with limit
+console.log("split(',', 2):", csv.split(',', 2)); // ['apple', 'banana']
+
+// split(''): split into characters
+console.log("split(''):", "Hello".split(''));
+// ['H', 'e', 'l', 'l', 'o']
+
+// ============= JOINING & CONCATENATION =============
+console.log("\n=== JOINING ===");
+
+let fruits2 = ['apple', 'banana', 'cherry'];
+
+// join(separator): array to string
+console.log("join(','):", fruits2.join(','));     // apple,banana,cherry
+console.log("join(' - '):", fruits2.join(' - ')); // apple - banana - cherry
+
+// concat(): concatenate strings
+console.log("concat():", "Hello".concat(" ", "World")); // Hello World
+
+// ============= REPEATING & PADDING =============
+console.log("\n=== REPEATING & PADDING ===");
+
+// repeat(count): repeat string n times
+console.log("'ab'.repeat(3):", 'ab'.repeat(3)); // ababab
+
+// padStart(length, fillString): pad at start
+console.log("'5'.padStart(4, '0'):", '5'.padStart(4, '0')); // 0005
+
+// padEnd(length, fillString): pad at end
+console.log("'5'.padEnd(4, '0'):", '5'.padEnd(4, '0'));     // 5000
+
+// ============= CHARACTER ACCESS =============
+console.log("\n=== CHARACTER ACCESS ===");
+
+let word = "JavaScript";
+
+// charAt(index): character at position
+console.log("charAt(0):", word.charAt(0));       // J
+console.log("charAt(4):", word.charAt(4));       // S
+
+// charCodeAt(index): character code (ASCII/Unicode)
+console.log("charCodeAt(0):", word.charCodeAt(0)); // 74 (J)
+
+// at(index): newer method, supports negative
+console.log("at(0):", word.at(0));       // J
+console.log("at(-1):", word.at(-1));     // t (last character)
+
+// bracket notation (read-only)
+console.log("word[0]:", word[0]);        // J
+
+// ============= CHECKING STRING PROPERTIES =============
+console.log("\n=== STRING PROPERTIES ===");
+
+let msg = "Hello";
+
+// length: number of characters
+console.log("length:", msg.length); // 5
+
+// Empty string check
+console.log("''.length:", ''.length); // 0
+
+// ============= PRACTICAL EXAMPLES =============
+console.log("\n=== PRACTICAL EXAMPLES ===");
+
+// Example 1: Email validation
+let email = "user@example.com";
+console.log("Valid email format:", email.includes('@') && email.includes('.')); // true
+
+// Example 2: URL parsing
+let url = "https://www.example.com/path";
+console.log("Domain starts with https:", url.startsWith('https')); // true
+
+// Example 3: Clean user input
+let userInput = "  John Doe  ";
+let cleaned = userInput.trim();
+console.log("Cleaned input:", cleaned); // "John Doe"
+
+// Example 4: CSV parsing
+let data = "name,age,city";
+let headers = data.split(',');
+console.log("Headers:", headers); // ['name', 'age', 'city']
+
+// Example 5: Format code
+let code = "myVariableName";
+let formatted = code.charAt(0).toUpperCase() + code.slice(1);
+console.log("Formatted:", formatted); // MyVariableName
+
+console.log("\n=== KEY TAKEAWAYS ===");
+console.log("✓ slice(): flexible, supports negative indices");
+console.log("✓ indexOf()/includes(): search strings");
+console.log("✓ replace()/replaceAll(): modify content");
+console.log("✓ split()/join(): convert between string/array");
+console.log("✓ trim(): remove whitespace");
+console.log("✓ Strings are IMMUTABLE - methods return new strings");

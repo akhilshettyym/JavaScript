@@ -1,104 +1,101 @@
-/*
-JavaScript Display Objects
-How to Display JavaScript Objects?
-Displaying a JavaScript object will output [object Object].
+// CONCEPT: Displaying Objects - Converting objects to readable formats
 
-Example
-// Create an Object
 const person = {
   name: "John",
   age: 30,
   city: "New York"
 };
 
-let text = person;
-Some solutions to display JavaScript objects are:
+// DISPLAYING THE WHOLE OBJECT - Different approaches
+console.log(person);                   // [object Object] in string context
+console.log(JSON.stringify(person));   // Proper JSON format
+// Output: {"name":"John","age":30,"city":"New York"}
 
-Displaying the Object Properties by name
-Displaying the Object Properties in a Loop
-Displaying the Object using Object.values()
-Displaying the Object using JSON.stringify()
-Displaying Object Properties
-The properties of an object can be added in a string:
+// DISPLAYING SPECIFIC PROPERTIES
+console.log(person.name + ", " + person.age); // "John, 30"
 
-Example
-// Create an Object
-const person = {
-  name: "John",
-  age: 30,
-  city: "New York"
-};
+// TEMPLATE LITERAL
+console.log(`${person.name} is ${person.age}`);  // "John is 30"
 
-// Add Properties
-let text = person.name + "," + person.age + "," + person.city;
-Using a For .. In Loop
-The properties of an object can be collected in a loop:
-
-Example
-// Create an Object
-const person = {
-  name: "John",
-  age: 30,
-  city: "New York"
-};
-
-// Build a Text
+// LOOPING THROUGH PROPERTIES - for...in loop
 let text = "";
-for (let x in person) {
-  text += person[x] + " ";
-};
-Note:
-You must use person[x] in the loop.
-
-person.x will not work (Because x is the loop variable).
-
-ADVERTISEMENT
-
-REMOVE ADS
-
-Using Object.values()
-Object.values() creates an array from the property values:
-
-// Create an Object
-const person = {
-  name: "John",
-  age: 30,
-  city: "New York"
-};
-
-// Create an Array
-const myArray = Object.values(person);
-
-// Stringify the Array
-let text = myArray.toString();
-Using Object.entries()
-Object.entries() makes it simple to use objects in loops:
-
-Example
-const fruits = {Bananas:300, Oranges:200, Apples:500};
-
-let text = "";
-for (let [fruit, value] of Object.entries(fruits)) {
-  text += fruit + ": " + value + "<br>";
+for (let key in person) {
+  text += person[key] + " ";
 }
-Using JSON.stringify()
-JavaScript objects can be converted to a string with JSON method JSON.stringify().
+console.log(text);                     // "John 30 New York "
 
-JSON.stringify() is included in JavaScript and supported in all browsers.
+// USING Object.keys() - Get array of keys
+console.log(Object.keys(person));      // ["name", "age", "city"]
 
-Note:
-The result will be a string written in JSON notation:
+// USING Object.values() - Get array of values
+console.log(Object.values(person));    // ["John", 30, "New York"]
 
-{"name":"John","age":50,"city":"New York"}
+// USING Object.entries() - Get [key, value] pairs
+console.log(Object.entries(person));   // [["name","John"], ["age",30], ["city","New York"]]
 
-Example
-// Create an Object
-const person = {
-  name: "John",
-  age: 30,
-  city: "New York"
+// LOOPING WITH entries()
+for (let [key, value] of Object.entries(person)) {
+  console.log(`${key}: ${value}`);
+}
+// Output: name: John, age: 30, city: New York
+
+// JSON.stringify() WITH OPTIONS
+const employee = {
+  firstName: "Alice",
+  lastName: "Smith",
+  department: "Engineering",
+  salary: 120000
 };
 
-// Stringify Object
-let text = JSON.stringify(person);
+// Pretty print with indentation
+console.log(JSON.stringify(employee, null, 2));
+/* Output:
+{
+  "firstName": "Alice",
+  "lastName": "Smith",
+  "department": "Engineering",
+  "salary": 120000
+}
 */
+
+// Replacer function - Filter properties
+const filtered = JSON.stringify(employee, (key, value) => {
+  if (key === "salary") return undefined;  // Exclude salary
+  return value;
+});
+console.log(filtered);  // {"firstName":"Alice","lastName":"Smith","department":"Engineering"}
+
+// NESTED OBJECTS
+const company = {
+  name: "TechCorp",
+  employees: [
+    { name: "John", role: "Developer" },
+    { name: "Jane", role: "Manager" }
+  ]
+};
+
+console.log(JSON.stringify(company, null, 2));
+
+// BUILD READABLE TEXT
+let display = "";
+for (let key in person) {
+  display += `${key}: ${person[key]}\n`;
+}
+console.log(display);
+/* Output:
+name: John
+age: 30
+city: New York
+*/
+
+// CUSTOM toString() METHOD
+const customObj = {
+  x: 10,
+  y: 20,
+  toString: function() {
+    return `Point(${this.x}, ${this.y})`;
+  }
+};
+
+console.log(String(customObj));        // "Point(10, 20)"
+console.log(customObj);                // Uses toString()

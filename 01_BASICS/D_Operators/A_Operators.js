@@ -1,133 +1,115 @@
-/*
-* JavaScript Operators :
-Operators are for Mathematical and Logical Computations
-- The Assignment Operator = assigns values
-- The Addition Operator + adds values
-- The Multiplication Operator * multiplies values
-- The Comparison Operator > compares values
-*/
+// ============================================
+// JAVASCRIPT OPERATORS OVERVIEW
+// ============================================
 
-// * JavaScript Assignment :
-// The Assignment Operator (=) assigns a value to a variable:
-// Assignment Examples
-let x = 10;
-// Assign the value 5 to x
-// let x = 5;
-// Assign the value 2 to y
-let y = 2;
-// Assign the value x + y to z:
-let z = x + y;
+// THEORY: Operators perform operations on operands
+// - Operand: A value being operated on (5 in "5 + 3")
+// - Operator: The operation performed (+)
+// - Result: The outcome of the operation (8)
 
-// JavaScript Addition
-// The Addition Operator (+) adds numbers:
-let a = 5;
-let b = 2;
-let c = a + b;
+// THEORY: Seven main operator types:
+// 1. Arithmetic: +, -, *, /, %, **
+// 2. Assignment: =, +=, -=, *=, etc.
+// 3. Comparison: ==, ===, !=, !==, >, <, >=, <=
+// 4. Logical: &&, ||, !
+// 5. Bitwise: &, |, ^, ~, <<, >>, >>>
+// 6. String: + (concatenation)
+// 7. Ternary: ? : (conditional)
 
-// JavaScript Multiplication
-// The Multiplication Operator (*) multiplies numbers:
-let d = 5;
-let e = 2;
-let f = d * e;
+// THEORY: Operator Precedence (PEMDAS in math)
+// - Exponentiation (**) highest
+// - Multiplication (*), Division (/), Modulus (%) 
+// - Addition (+), Subtraction (-)
+// - Comparison operators
+// - Logical operators (&&, ||)
+// - Assignment operators lowest
 
-/*
-* Types of JavaScript Operators :
-There are different types of JavaScript operators:
-- Arithmetic Operators
-- Assignment Operators
-- Comparison Operators
-- Logical Operators
-- And more ...
+// ============================================
+// WORKING EXAMPLES
+// ============================================
 
-* JavaScript Arithmetic Operators :
-- Arithmetic Operators are used to perform arithmetic on numbers:
+// ARITHMETIC OPERATORS
+console.log("=== ARITHMETIC OPERATORS ===");
+let a = 10;
+let b = 3;
 
-- Arithmetic Operators Example :
-let a = 3;
-let x = (100 + 50) * a;
+console.log(a + b);   // Addition: 13
+console.log(a - b);   // Subtraction: 7
+console.log(a * b);   // Multiplication: 30
+console.log(a / b);   // Division: 3.333...
+console.log(a % b);   // Modulus (remainder): 1
+console.log(a ** b);  // Exponentiation: 1000 (10^3)
 
-Operator	    Description
-+	            Addition
--	            Subtraction
-*	            Multiplication
-**	            Exponentiation
-/	            Division
-%	            Modulus (Division Remainder)
-++	            Increment
---	            Decrement
-
-* JavaScript String Addition :
-- The + can also be used to add (concatenate) strings:
-- Example :
-let text1 = "John";
-let text2 = "Doe";
-let text3 = text1 + " " + text2;
-- The += assignment operator can also be used to add (concatenate) strings:
-
-- Example :
-let text1 = "What a very ";
-text1 += "nice day";
-- The result of text1 will be:
-    What a very nice day
-
-- Note : When used on strings, the + operator is called the concatenation operator.
-
-* Adding Strings and Numbers :
-- Adding two numbers, will return the sum as a number like 5 + 5 = 10.
-- Adding a number and a string, will return the sum as a concatenated string like 5 + "5" = "55".
-- Example :
-let x = 5 + 5;
-let y = "5" + 5;
-let z = "Hello" + 5;
-- The result of x, y, and z will be:
-    10
-    55
-    Hello5
-
-- Note : If you add a number and a string, the result will be a string!
-
-* JavaScript Assignment Operators :
-- Assignment operators assign values to JavaScript variables.
-- The Addition Assignment Operator (+=) adds a value to a variable.
-- Assignment :
-let x = 10;
-x += 5;
-
-Operator	    Example	        Same As
-=	            x = y	        x = y
-+=	            x += y	        x = x + y
--=	            x -= y	        x = x - y
-*=	            x *= y	        x = x * y
-/=	            x /= y	        x = x / y
-%=	            x %= y	        x = x % y
-**=	            x **= y     	x = x ** y
-
-* JavaScript Comparison Operators :
-- Comparison operators are used to compare two values.
-- Comparison operators always return true or false.
-- Example :
+// ASSIGNMENT OPERATORS
+console.log("\n=== ASSIGNMENT OPERATORS ===");
 let x = 5;
-let result = x > 8;
+console.log("x =", x); // Output: 5
 
-Operator	    Description	                        Example
-==	            equal to	                        x == 5
-===	            equal value and equal type	        x === 5
-!=	            not equal	                        x != 5
-!==	            not equal value or not equal type	x !== 5
->	            greater than	                    x > 5
-<	            less than	                        x < 5
->=	            greater than or equal to	        x >= 5
-<=	            less than or equal to	            x <= 5
-All the comparison operators above can also be used on strings:
+x += 3;  // x = x + 3
+console.log("x += 3 →", x); // Output: 8
 
-- Example :
-let text1 = "A";
-let text2 = "B";
-let result = text1 < text2;
+x -= 2;  // x = x - 2
+console.log("x -= 2 →", x); // Output: 6
 
-* JavaScript Logical Operators :
-Operator	    Description
-&&	            logical and
-||	            logical or
-!	            logical not
-*/
+x *= 2;  // x = x * 2
+console.log("x *= 2 →", x); // Output: 12
+
+x /= 4;  // x = x / 4
+console.log("x /= 4 →", x); // Output: 3
+
+// STRING CONCATENATION (+ operator)
+console.log("\n=== STRING CONCATENATION ===");
+let firstName = "John";
+let lastName = "Doe";
+let fullName = firstName + " " + lastName;
+console.log(fullName); // Output: John Doe
+
+// String concatenation with +=
+let message = "Hello";
+message += " ";
+message += "World";
+console.log(message); // Output: Hello World
+
+// COMPARISON OPERATORS (return boolean)
+console.log("\n=== COMPARISON OPERATORS ===");
+let num = 5;
+console.log(num > 3);   // true
+console.log(num < 3);   // false
+console.log(num >= 5);  // true
+console.log(num <= 5);  // true
+console.log(num == 5);  // true
+console.log(num === "5"); // false (different types)
+
+// LOGICAL OPERATORS
+console.log("\n=== LOGICAL OPERATORS ===");
+let condition1 = true;
+let condition2 = false;
+
+console.log(condition1 && condition2); // false (AND: both must be true)
+console.log(condition1 || condition2); // true (OR: at least one true)
+console.log(!condition1); // false (NOT: negation)
+
+// OPERATOR PRECEDENCE
+console.log("\n=== OPERATOR PRECEDENCE ===");
+console.log(2 + 3 * 4); // Output: 14 (multiply first: 3*4=12, then 2+12=14)
+console.log((2 + 3) * 4); // Output: 20 (parentheses first: 2+3=5, then 5*4=20)
+console.log(100 + 50 * 3); // Output: 250 (multiply first: 50*3=150, then 100+150=250)
+
+// Mixed operations
+console.log("\n=== MIXED OPERATIONS ===");
+let result1 = 10 + 5 * 2;  // 20 (multiplication first)
+let result2 = (10 + 5) * 2; // 30 (parentheses first)
+console.log("10 + 5 * 2 =", result1); // Output: 20
+console.log("(10 + 5) * 2 =", result2); // Output: 30
+
+// Increment and Decrement
+console.log("\n=== INCREMENT / DECREMENT ===");
+let count = 5;
+console.log(count++); // Output: 5 (post-increment, returns old value)
+console.log(count);   // Output: 6
+
+console.log(++count); // Output: 7 (pre-increment, returns new value)
+console.log(count);   // Output: 7
+
+count--;
+console.log(count); // Output: 6

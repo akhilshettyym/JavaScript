@@ -1,71 +1,66 @@
-let x, y, z;    // Statement 1
-x = 5;          // Statement 2
-y = 6;          // Statement 3
-z = x + y;      // Statement 4
+// ============================================
+// JAVASCRIPT STATEMENTS
+// ============================================
 
-/*
-* JavaScript Programs :
-- A computer program is a list of "instructions" to be "executed" by a computer.
-- These programming instructions are called statements.
-- Most JavaScript programs contain many statements.
-- The statements are executed, one by one, in the same order as they are written.
+// THEORY: A statement is an instruction to the browser
+// - Programs consist of multiple statements executed sequentially
+// - Each statement performs a specific action
 
-* JavaScript Statements :
-- JavaScript statements are composed of:
-- Values, Operators, Expressions, Keywords, and Comments.
-- This statement tells the browser to write "Hello Dolly." inside an HTML element with id="demo": 
-document.getElementById("demo").innerHTML = "Hello Dolly.";
+// THEORY: Semicolons (;) separate statements
+// - Technically optional due to automatic semicolon insertion
+// - Best practice: Always use them for clarity and consistency
 
-* JavaScript Semicolons ; : 
-- Semicolons separate JavaScript statements.
-- Add a semicolon at the end of each executable statement:
-- Examples :
-let a, b, c;  // Declare 3 variables
-a = 5;        // Assign the value 5 to a
-b = 6;        // Assign the value 6 to b
-c = a + b;    // Assign the sum of a and b to c
+// THEORY: JavaScript ignores extra whitespace
+// - Multiple spaces don't affect execution
+// - Use spaces for readability: let x = y + z; (good)
+// - NOT: let x=y+z; (works but less readable)
 
-When separated by semicolons, multiple statements on one line are allowed:
-a = 5; b = 6; c = a + b;
+// THEORY: Code blocks {} group statements together
+// - Used in functions, loops, conditionals
+// - Statements in a block execute as a unit
 
-* JavaScript White Space :
-- JavaScript ignores multiple spaces. You can add white space to your script to make it more readable.
-- The following lines are equivalent:
-let person = "Hege";
-let person="Hege";
-- A good practice is to put spaces around operators ( = + - * / ):
-let x = y + z;
+// THEORY: JavaScript Keywords start most statements
+// - Reserved words with special meanings (cannot use as variable names)
+// - Examples: let, const, var, if, for, function, return, try
 
-* JavaScript Line Length and Line Breaks
-- For best readability, programmers often like to avoid code lines longer than 80 characters.
-- If a JavaScript statement does not fit on one line, the best place to break it is after an operator:
-- Example :
-  document.getElementById("demo").innerHTML = "Hello Shetty!";
+// ============================================
+// WORKING EXAMPLES
+// ============================================
 
-* JavaScript Code Blocks :
-- JavaScript statements can be grouped together in code blocks, inside curly brackets {...}.
-- The purpose of code blocks is to define statements to be executed together.
-- One place you will find statements grouped together in blocks, is in JavaScript functions:
-- Example :
-function myFunction() {
-  document.getElementById("demo1").innerHTML = "Hello Dolly!";
-  document.getElementById("demo2").innerHTML = "How are you?";
+// Variable declaration statements
+let a, b, c;  // Multiple variable declaration
+a = 5;        // Assignment statement
+b = 6;        // Another assignment
+c = a + b;    // Expression statement
+console.log(c); // Output: 11
+
+// Multiple statements on one line (not recommended)
+let x = 10; let y = 20; let z = x + y;
+console.log(z); // Output: 30
+
+// Statements with good spacing for readability
+let person = "John";
+let age = 30;
+let message = person + " is " + age + " years old";
+console.log(message); // Output: John is 30 years old
+
+// Code block example (grouping statements)
+{
+  let blockVar = 100;
+  console.log(blockVar); // Output: 100
 }
 
-* JavaScript Keywords :
-- JavaScript statements often start with a keyword to identify the JavaScript action to be performed.
-- Our Reserved Words Reference lists all JavaScript keywords.
-- Here is a list of some of the keywords you will learn about in this tutorial:
+// Using common JavaScript keywords in statements
+let count = 0;
+if (count < 5) {      // if keyword
+  console.log("Count is less than 5");
+}
 
-* Keyword   - Description :
-- var	    - Declares a variable
-- let	    - Declares a block variable
-- const	    - Declares a block constant
-- if	    - Marks a block of statements to be executed on a condition
-- switch	- Marks a block of statements to be executed in different cases
-- for	    - Marks a block of statements to be executed in a loop
-- function	- Declares a function
-- return	- Exits a function
-- try	    - Implements error handling to a block of statements
-Note : JavaScript keywords are reserved words. Reserved words cannot be used as names for variables.
-*/
+for (let i = 0; i < 3; i++) {  // for keyword
+  console.log("Iteration:", i);
+}
+
+function greet(name) {  // function keyword
+  return "Hello, " + name;  // return keyword
+}
+console.log(greet("Alice"));  // Output: Hello, Alice

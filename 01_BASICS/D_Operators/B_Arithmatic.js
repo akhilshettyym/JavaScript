@@ -1,118 +1,124 @@
-/*
-* JavaScript Arithmatic :
-- Arithmetic operators perform arithmetic on numbers (literals or variables).
+// ============================================
+// ARITHMETIC OPERATORS - DETAILED
+// ============================================
 
-Operator	    Description
-+	            Addition
--	            Subtraction
-*	            Multiplication
-**	            Exponentiation (ES2016)
-/	            Division
-%	            Modulus (Remainder)
-++	            Increment
---	            Decrement
+// THEORY: Arithmetic operators perform mathematical operations
+// - +  : Addition
+// - -  : Subtraction
+// - *  : Multiplication
+// - /  : Division
+// - %  : Modulus (returns remainder)
+// - ** : Exponentiation (power)
+// - ++ : Increment by 1
+// - -- : Decrement by 1
 
-* Arithmetic Operations :
-- A typical arithmetic operation operates on two numbers.
-- The two numbers can be literals:
-- Example
-let x = 100 + 50;
+// THEORY: Operator Precedence in order:
+// 1. ** (Exponentiation) - highest
+// 2. *, /, % (Multiplication, Division, Modulus)
+// 3. +, - (Addition, Subtraction) - lowest
+// 4. Operations with same precedence go left to right
 
-- or variables:
-- Example :
-let x = a + b;
+// ============================================
+// WORKING EXAMPLES
+// ============================================
 
-- or expressions :
-- Example :
-let x = (100 + 50) * a;
-
-* Operators and Operands :
-- The numbers (in an arithmetic operation) are called operands.
-- The operation (to be performed between the two operands) is defined by an operator.
-Operand	    Operator	Operand
-100	        +	        50
-
-
-* Adding :
-- The addition operator (+) adds numbers:
-- Example
+console.log("=== ADDITION ===");
 let x = 5;
 let y = 2;
 let z = x + y;
+console.log(x, "+", y, "=", z); // Output: 5 + 2 = 7
 
-* Subtracting :
-- The subtraction operator (-) subtracts numbers.
-- Example
-let x = 5;
-let y = 2;
-let z = x - y;
+// SUBTRACTION
+console.log("\n=== SUBTRACTION ===");
+z = x - y;
+console.log(x, "-", y, "=", z); // Output: 5 - 2 = 3
 
-* Multiplying :
-- The multiplication operator (*) multiplies numbers.
-- Example
-let x = 5;
-let y = 2;
-let z = x * y;
+// MULTIPLICATION
+console.log("\n=== MULTIPLICATION ===");
+z = x * y;
+console.log(x, "*", y, "=", z); // Output: 5 * 2 = 10
 
-* Dividing
-- The division operator (/) divides numbers.
-- Example
-let x = 5;
-let y = 2;
-let z = x / y;
+// DIVISION
+console.log("\n=== DIVISION ===");
+z = x / y;
+console.log(x, "/", y, "=", z); // Output: 5 / 2 = 2.5
 
-* Remainder :
-- he modulus operator (%) returns the division remainder.
-- Example
-let x = 5;
-let y = 2;
-let z = x % y;
+// MODULUS (Remainder)
+console.log("\n=== MODULUS (REMAINDER) ===");
+z = x % y;
+console.log(x, "%", y, "=", z); // Output: 5 % 2 = 1
+console.log(10 % 3); // Output: 1 (10 ÷ 3 = 3 remainder 1)
+console.log(20 % 5); // Output: 0 (20 ÷ 5 = 4 remainder 0)
+console.log(17 % 5); // Output: 2 (17 ÷ 5 = 3 remainder 2)
 
-- In arithmetic, the division of two integers produces a quotient and a remainder.
-- In mathematics, the result of a modulo operation is the remainder of an arithmetic division.
+// Common use: Check if number is even or odd
+let num = 7;
+console.log(num % 2 === 0 ? "even" : "odd"); // Output: odd
 
-* Incrementing :
-- The increment operator (++) increments numbers.
-- Example :
-let x = 5;
-x++;
-let z = x;
+// EXPONENTIATION
+console.log("\n=== EXPONENTIATION (**) ===");
+z = x ** y;
+console.log(x, "**", y, "=", z); // Output: 5 ** 2 = 25
 
-* Decrementing :
-- The decrement operator (--) decrements numbers.
-- Example
-let x = 5;
-x--;
-let z = x;
+console.log(2 ** 3); // Output: 8 (2 × 2 × 2)
+console.log(5 ** 2); // Output: 25 (5 × 5)
+console.log(10 ** 2); // Output: 100
 
-- Exponentiation :
-- The exponentiation operator (**) raises the first operand to the power of the second operand.
-- Example
-let x = 5;
-let z = x ** 2;
-x ** y produces the same result as Math.pow(x,y):
+// Math.pow() also works
+console.log(Math.pow(x, y)); // Output: 25
 
-- Example :
-let x = 5;
-let z = Math.pow(x,2);
+// INCREMENT (++)
+console.log("\n=== INCREMENT (++) ===");
+let counter = 5;
+counter++;  // Increment by 1
+console.log("After counter++:", counter); // Output: 6
 
-* Operator Precedence :
-- Operator precedence describes the order in which operations are performed in an arithmetic expression.
-- Example
-let x = 100 + 50 * 3;
+// Pre-increment vs Post-increment
+let preInc = 10;
+let result1 = ++preInc;  // Pre-increment: increment first, then return
+console.log("++preInc:", result1, "preInc:", preInc); // Output: 11 11
 
-- Is the result of example above the same as 150 * 3, or is it the same as 100 + 150?
-- Is the addition or the multiplication done first?
-- As in traditional school mathematics, the multiplication is done first.
-- Multiplication (*) and division (/) have higher precedence than addition (+) and subtraction (-).
-- And (as in school mathematics) the precedence can be changed by using parentheses.
-- When using parentheses, the operations inside the parentheses are computed first:
+let postInc = 10;
+let result2 = postInc++;  // Post-increment: return first, then increment
+console.log("postInc++:", result2, "postInc:", postInc); // Output: 10 11
 
-- Example :
-let x = (100 + 50) * 3;
+// DECREMENT (--)
+console.log("\n=== DECREMENT (--) ===");
+let score = 10;
+score--;  // Decrement by 1
+console.log("After score--:", score); // Output: 9
 
-- When many operations have the same precedence (like addition and subtraction or multiplication and division), they are computed from left to right:
-- Examples :
-let x = 100 + 50 - 3;
-let x = 100 / 50 * 3;
-*/
+// Pre-decrement vs Post-decrement
+let preDec = 10;
+result1 = --preDec;  // Pre-decrement: decrement first, then return
+console.log("--preDec:", result1, "preDec:", preDec); // Output: 9 9
+
+let postDec = 10;
+result2 = postDec--;  // Post-decrement: return first, then decrement
+console.log("postDec--:", result2, "postDec:", postDec); // Output: 10 9
+
+// OPERATOR PRECEDENCE
+console.log("\n=== OPERATOR PRECEDENCE ===");
+console.log(2 + 3 * 4); // 14 (multiply first: 3*4=12, then 2+12=14)
+console.log((2 + 3) * 4); // 20 (add first in parentheses)
+
+console.log(100 + 50 * 3); // 250 (50*3=150, then 100+150=250)
+console.log((100 + 50) * 3); // 450
+
+console.log(2 ** 3 * 4); // 32 (2**3=8, then 8*4=32)
+console.log(2 ** (3 * 4)); // 4096 (3*4=12, then 2**12=4096)
+
+// LEFT TO RIGHT for same precedence
+console.log(100 + 50 - 3); // 147 (left to right: 100+50=150, then 150-3=147)
+console.log(100 / 50 * 3); // 6 (left to right: 100/50=2, then 2*3=6)
+
+// Practical examples
+console.log("\n=== PRACTICAL EXAMPLES ===");
+let subtotal = 100;
+let taxRate = 0.08;
+let total = subtotal + (subtotal * taxRate);
+console.log("Total with tax:", total); // Output: 108
+
+let circleRadius = 5;
+let area = Math.PI * circleRadius ** 2;
+console.log("Circle area:", area.toFixed(2)); // Output: 78.54

@@ -1,163 +1,82 @@
-/*
-JavaScript Array Search
-Array Search Methods
-Array indexOf()
-Array lastIndexOf()
-Array includes()
-Array find()
-Array findIndex()
-Array findLast()
-Array findLastIndex()
-Complete JavaScript Array Reference
+// CONCEPT: Array Search Methods - Finding elements in arrays
 
-See Also:
-JavaScript Array Tutorial
+const numbers = [10, 20, 30, 40, 50, 30];
+const products = [
+  { id: 1, name: "Laptop", price: 1000 },
+  { id: 2, name: "Mouse", price: 25 },
+  { id: 3, name: "Keyboard", price: 75 }
+];
 
-JavaScript Basic Array Methods
+// indexOf() - First occurrence of element
+console.log(numbers.indexOf(30));      // 2
+console.log(numbers.indexOf(99));      // -1 - not found
+console.log(numbers.indexOf(30, 3));   // 5 - search from index 3
 
-JavaScript Array Sort Methods
+// lastIndexOf() - Last occurrence
+console.log(numbers.lastIndexOf(30));  // 5 (last time 30 appears)
+console.log(numbers.lastIndexOf(99));  // -1
 
-JavaScript Array Iteration Methods
+// includes() - Check if element exists (returns boolean)
+console.log(numbers.includes(20));     // true
+console.log(numbers.includes(99));     // false
+console.log(numbers.includes(20, 2));  // false - search from index 2
 
-JavaScript Array Reference
+// find() - Get first element matching condition
+const firstLarge = numbers.find(n => n > 25);
+console.log(firstLarge);               // 30
 
-JavaScript Array indexOf()
-The indexOf() method searches an array for an element value and returns its position.
+const expensive = products.find(p => p.price > 100);
+console.log(expensive);                // { id: 1, name: "Laptop", price: 1000 }
 
-Note: The first item has position 0, the second item has position 1, and so on.
+// findIndex() - Get index of first match
+const index = numbers.findIndex(n => n > 25);
+console.log(index);                    // 2
 
-Example
-Search an array for the item "Apple":
+const productIndex = products.findIndex(p => p.name === "Mouse");
+console.log(productIndex);             // 1
 
-const fruits = ["Apple", "Orange", "Apple", "Mango"];
-let position = fruits.indexOf("Apple") + 1;
-Syntax
-array.indexOf(item, start)
-item	Required. The item to search for.
-start	Optional. Where to start the search. Negative values will start at the given position counting from the end, and search to the end.
-Array.indexOf() returns -1 if the item is not found.
+// findLast() - Get last element matching condition (ES2023)
+// console.log(numbers.findLast(n => n > 25)); // 50
 
-If the item is present more than once, it returns the position of the first occurrence.
+// filter() - Get ALL elements matching condition
+const large = numbers.filter(n => n > 25);
+console.log(large);                    // [30, 40, 50, 30]
 
-JavaScript Array lastIndexOf()
-Array.lastIndexOf() is the same as Array.indexOf(), but returns the position of the last occurrence of the specified element.
+const affordable = products.filter(p => p.price < 100);
+console.log(affordable);               // [Mouse, Keyboard]
 
-Example
-Search an array for the item "Apple":
+// some() - Check if ANY element matches condition
+console.log(numbers.some(n => n > 40)); // true
+console.log(numbers.some(n => n > 100)); // false
+console.log(products.some(p => p.price > 500)); // true
 
-const fruits = ["Apple", "Orange", "Apple", "Mango"];
-let position = fruits.lastIndexOf("Apple") + 1;
-Syntax
-array.lastIndexOf(item, start)
-item	Required. The item to search for
-start	Optional. Where to start the search. Negative values will start at the given position counting from the end, and search to the beginning
-JavaScript Array includes()
-ECMAScript 2016 introduced Array.includes() to arrays. This allows us to check if an element is present in an array (including NaN, unlike indexOf).
+// every() - Check if ALL elements match condition
+console.log(numbers.every(n => n > 0));   // true
+console.log(numbers.every(n => n > 25));  // false
+console.log(products.every(p => p.price > 0)); // true
 
-Example
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// COMPLEX SEARCH EXAMPLES
+const users = [
+  { id: 1, name: "Alice", age: 25, active: true },
+  { id: 2, name: "Bob", age: 30, active: false },
+  { id: 3, name: "Charlie", age: 28, active: true }
+];
 
-fruits.includes("Mango"); // is true
-Syntax
-array.includes(search-item)
-Array.includes() allows to check for NaN values. Unlike Array.indexOf().
+// Find active user with age > 25
+const activeOld = users.find(u => u.active && u.age > 25);
+console.log(activeOld);                // { id: 3, name: "Charlie", ... }
 
-Browser Support
-includes() is an ECMAScript 2016 feature.
+// Get all inactive users
+const inactive = users.filter(u => !u.active);
+console.log(inactive);                 // [Bob]
 
-ES 2016 is fully supported in all modern browsers since March 2017:
+// Check if any user over 30
+console.log(users.some(u => u.age > 30)); // false
 
-Chrome
-52	Edge
-15	Firefox
-52	Safari
-10.1	Opera
-39
-Jul 2016	Apr 2017	Mar 2017	May 2017	Aug 2016
-ADVERTISEMENT
+// Check if all users active
+console.log(users.every(u => u.active)); // false
 
-REMOVE ADS
-
-JavaScript Array find()
-The find() method returns the value of the first array element that passes a test function.
-
-This example finds (returns the value of) the first element that is larger than 18:
-
-Example
-const numbers = [4, 9, 16, 25, 29];
-let first = numbers.find(myFunction);
-
-function myFunction(value, index, array) {
-  return value > 18;
-}
-Note that the function takes 3 arguments:
-
-The item value
-The item index
-The array itself
-Browser Support
-find() is an ES6 feature.
-
-ES6 is fully supported in all modern browsers since June 2017:
-
-Chrome
-51	Edge
-15	Firefox
-54	Safari
-10	Opera
-38
-May 2016	Apr 2017	Jun 2017	Sep 2016	Jun 2016
-JavaScript Array findIndex()
-The findIndex() method returns the index of the first array element that passes a test function.
-
-This example finds the index of the first element that is larger than 18:
-
-Example
-const numbers = [4, 9, 16, 25, 29];
-let first = numbers.findIndex(myFunction);
-
-function myFunction(value, index, array) {
-  return value > 18;
-}
-Note that the function takes 3 arguments:
-
-The item value
-The item index
-The array itself
-Browser Support
-findIndex() is an ES6 feature.
-
-ES6 is fully supported in all modern browsers since June 2017:
-
-Chrome
-51	Edge
-15	Firefox
-54	Safari
-10	Opera
-38
-May 2016	Apr 2017	Jun 2017	Sep 2016	Jun 2016
-JavaScript Array findLast() Method
-ES2023 added the findLast() method that will start from the end of an array and return the value of the first element that satisfies a condition.
-
-Example
-const temp = [27, 28, 30, 40, 42, 35, 30];
-let high = temp.findLast(x => x > 40);
-Browser Support
-findLast() is an ES2023 feature.
-
-JavaScript 2023 is supported in all modern browsers since July 2023:
-
-Chrome
-110	Edge
-110	Firefox
-115	Safari
-16.4	Opera
-96
-Feb 2023	Feb 2023	Jul 2023	Mar 2023	May 2023
-JavaScript Array findLastIndex() Method
-The findLastIndex() method finds the index of the last element that satisfies a condition.
-
-Example
-const temp = [27, 28, 30, 40, 42, 35, 30];
-let pos = temp.findLastIndex(x => x > 40);
-*/
+// COMBINING SEARCHES
+const searchTerm = "alice";
+const result = users.find(u => u.name.toLowerCase().includes(searchTerm.toLowerCase()));
+console.log(result);                   // { id: 1, name: "Alice", ... }

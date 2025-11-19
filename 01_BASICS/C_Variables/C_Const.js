@@ -1,175 +1,112 @@
-/*
-* JavaScript Const :
-- The const keyword was introduced in ES6 (2015)
-- Variables defined with const cannot be Redeclared
-- Variables defined with const cannot be Reassigned
-- Variables defined with const have Block Scope
+// ============================================
+// JAVASCRIPT CONST KEYWORD
+// ============================================
 
-* Cannot be Reassigned :
-- A variable defined with the const keyword cannot be reassigned:
-- Example :
-const PI = 3.141592653589793;
-PI = 3.14;      // This will give an error
-PI = PI + 10;   // This will also give an error
+// THEORY: const was introduced in ES6 (2015)
+// - Block-scoped (like let)
+// - Cannot be reassigned (immutable binding)
+// - Cannot be redeclared
+// - MUST be initialized when declared
+// - Use const by default, let only when reassignment needed
 
-* Must be Assigned :
-- JavaScript const variables must be assigned a value when they are declared:
-- Correct :
-    const PI = 3.14159265359;
-- Incorrect :
-    const PI;
-    PI = 3.14159265359;
+// THEORY: const creates constant reference, not immutable value
+// - Cannot reassign the variable to new value
+// - CAN modify properties of objects/arrays stored in const
+// - Example: const obj = {}; obj.prop = "value"; ✓ Allowed
+// - Example: const obj = {}; obj = null; ✗ Error (reassignment not allowed)
 
-* When to use JavaScript const?
-- Always declare a variable with const when you know that the value should not be changed.
+// THEORY: Best practices:
+// - Use const for values that never change
+// - Use const for objects/arrays (even though contents can change)
+// - Use let only when variable needs to be reassigned
 
-* Use const when you declare :
-- A new Array
-- A new Object
-- A new Function
-- A new RegExp
+// ============================================
+// WORKING EXAMPLES
+// ============================================
 
-* Constant Objects and Arrays :
-- The keyword const is a little misleading.
+// Basic const usage - value that never changes
+const PI = 3.14159;
+console.log(PI); // Output: 3.14159
 
-- It does not define a constant value. It defines a constant reference to a value.
+// Attempting to reassign const causes error
+// PI = 3.14;  // ✗ ERROR: Assignment to constant variable
 
-Because of this you can NOT:
-- Reassign a constant value
-- Reassign a constant array
-- Reassign a constant object
+// Attempting to increment const causes error
+// PI++;  // ✗ ERROR: Assignment to constant variable
 
-But you CAN:
-- Change the elements of constant array
-- Change the properties of constant object
-- Constant Arrays
+// const must be initialized at declaration
+const MAX_USERS = 100;  // ✓ Correct
+// const MIN_USERS;  // ✗ ERROR: Missing initializer
 
-You can change the elements of a constant array:
-- Example :
-// You can create a constant array:
-const cars = ["Saab", "Volvo", "BMW"];
+// const with objects - can modify properties
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 30
+};
 
-// You can change an element:
-cars[0] = "Toyota";
+// Modify properties of const object (allowed)
+person.age = 31;
+console.log(person.age); // Output: 31
 
-// You can add an element:
-cars.push("Audi");
-But you can NOT reassign the array:
+// Add properties to const object (allowed)
+person.email = "john@example.com";
+console.log(person.email); // Output: john@example.com
 
-- Example :
-const cars = ["Saab", "Volvo", "BMW"];
+// Reassign const object itself (NOT allowed)
+// person = { firstName: "Jane" };  // ✗ ERROR
 
-cars = ["Toyota", "Volvo", "Audi"];    // ERROR
-Constant Objects
-You can change the properties of a constant object:
+// const with arrays - can modify elements
+const colors = ["red", "green", "blue"];
+console.log(colors[0]); // Output: red
 
-- Example :
-// You can create a const object:
-const car = {type:"Fiat", model:"500", color:"white"};
+// Change array element (allowed)
+colors[0] = "yellow";
+console.log(colors); // Output: [ 'yellow', 'green', 'blue' ]
 
-// You can change a property:
-car.color = "red";
+// Add to array (allowed)
+colors.push("purple");
+console.log(colors); // Output: [ 'yellow', 'green', 'blue', 'purple' ]
 
-// You can add a property:
-car.owner = "Johnson";
-But you can NOT reassign the object:
+// Reassign const array itself (NOT allowed)
+// colors = ["black", "white"];  // ✗ ERROR
 
-- Example :
-const car = {type:"Fiat", model:"500", color:"white"};
-car = {type:"Volvo", model:"EX60", color:"red"}    // ERROR
-
-* Difference Between var, let and const :
-        Scope	Redeclare	Reassign	Hoisted	    Binds this
-var	    No	    Yes	        Yes	        Yes	        Yes
-let	    Yes	    No	        Yes	        No	        No
-const	Yes	    No	        No	        No	        No
-
-* What is Good?
-- let and const have block scope.
-- let and const can not be redeclared.
-- let and const must be declared before use.
-- let and const does not bind to this.
-- let and const are not hoisted.
-
-* What is Not Good?
-- var does not have to be declared.
-- var is hoisted.
-- var binds to this.
-
-* Block Scope :
-- Declaring a variable with const is similar to let when it comes to Block Scope.
-- The x declared in the block, in this example, is not the same as the x declared outside the block:
-- Example :
+// Block scope - same as let
 const x = 10;
-// Here x is 10
-{
-const x = 2;
-// Here x is 2
-}
-// Here x is 10
-
-
-* Redeclaring :
-- Redeclaring a JavaScript var variable is allowed anywhere in a program:
-- Example :
-    var x = 2;     // Allowed
-    var x = 3;     // Allowed
-    x = 4;         // Allowed
-- Redeclaring an existing var or let variable to const, in the same scope, is not allowed:
-
-- Example :
-    var x = 2;     // Allowed
-    const x = 2;   // Not allowed
+console.log(x); // Output: 10
 
 {
-let x = 2;     // Allowed
-const x = 2;   // Not allowed
+  const x = 20;  // Different scope, same name
+  console.log(x); // Output: 20
 }
 
+console.log(x); // Output: 10
+
+// const in different blocks (allowed)
+const y = 1;
 {
-const x = 2;   // Allowed
-const x = 2;   // Not allowed
+  const y = 2;
+  console.log("Block y:", y); // Output: Block y: 2
 }
-- Reassigning an existing const variable, in the same scope, is not allowed:
+console.log("Outside y:", y); // Output: Outside y: 1
 
-- Example :
-const x = 2;     // Allowed
-x = 2;           // Not allowed
-var x = 2;       // Not allowed
-let x = 2;       // Not allowed
-const x = 2;     // Not allowed
+// Real-world examples
+const API_URL = "https://api.example.com";
+const DATABASE_NAME = "myApp";
+const DEFAULT_TIMEOUT = 5000;
 
-{
-  const x = 2;   // Allowed
-  x = 2;         // Not allowed
-  var x = 2;     // Not allowed
-  let x = 2;     // Not allowed
-  const x = 2;   // Not allowed
-}
-- Redeclaring a variable with const, in another scope, or in another block, is allowed:
+const config = {
+  host: "localhost",
+  port: 3000,
+  debug: true
+};
 
-- Example :
-const x = 2;       // Allowed
-{
-  const x = 3;   // Allowed
-}
-{
-  const x = 4;   // Allowed
-}
+const settings = [
+  { theme: "dark" },
+  { language: "en" },
+  { notifications: true }
+];
 
-* Hoisting :
-- ariables defined with var are hoisted to the top and can be initialized at any time.
-- Meaning: You can use the variable before it is declared:
-
-- Example :
-This is OK:
-    carName = "Volvo";
-    var carName;
-- If you want to learn more about hoisting, study the chapter JavaScript Hoisting.
-- Variables defined with const are also hoisted to the top, but not initialized.
-- Meaning: Using a const variable before it is declared will result in a ReferenceError:
-- Example :
-    alert (carName);
-    const carName = "Volvo";
-
-*/
+// Can modify config properties
+config.debug = false;
+console.log(config.debug); // Output: false

@@ -1,148 +1,149 @@
-/*
-JavaScript Booleans
+// ============================================
+// BOOLEAN DATA TYPE
+// ============================================
 
-* The Boolean Data Type :
-- In JavaScript, a Boolean is a primitive data type that can only have one of two values:
-true or false
-The Boolean value of an expression is the basis for all JavaScript comparisons and conditions.
+// THEORY: Boolean is primitive type with two values: true or false
+// - Fundamental for logic and control flow
+// - Used in comparisons, conditions, and loops
+// - Must be lowercase: true/false (not True/False)
+// - Returned by comparison operators
 
-* Key Boolean Characteristics :
-- true and false are boolean data types
-- true and false are the only possible boolean values
-- true and false must be written in lowercase
-- true and false must be written without quotes
+// THEORY: Truthy vs Falsy values
+// - FALSY: 0, "", null, undefined, NaN, false
+// - TRUTHY: Everything else (1, "hello", [], {}, true, etc.)
+// - Used implicitly in if statements and logical operators
 
-* Boolean Use Cases :
-Very often, in programming, we will need a data type that can represent one of two values, like:
-- yes or no
-- on or off
-- true or false
-- Boolean values are fundamental for logical operations and control flow in JavaScript programming.
+// THEORY: Boolean() function converts values to boolean
+// - Boolean(0) → false
+// - Boolean("") → false
+// - Boolean(1) → true
+// - Boolean("hello") → true
 
-* Comparisons :
-- All JavaScript comparison operators (like ==, !=, <, >) return true or false from the comparison.
-- Given that x = 5, the table below explains comparison:
+// THEORY: Avoid Boolean objects (use primitives)
+// - let x = true; ✓ Primitive
+// - let y = new Boolean(true); ✗ Object (avoid)
 
-Description	            Example	            Returns
-Not equal to	        (x == 8)	        false
-Unequal to	            (x != 8)	        true
-Greater than	        (x > 8)	            false
-Less than	            (x < 8)	            true
+// ============================================
+// WORKING EXAMPLES
+// ============================================
 
-- Example :
-let x = 5;
-(x == 8); // equals false
-(x != 8); // equals true
+console.log("=== BASIC BOOLEANS ===");
 
-* Conditions :
-- Booleans are extensively used in if statements to determine the code blocks to execute based on the logic.
+let isActive = true;
+let isDeleted = false;
 
-- Example	                    Result
-if (day == "Monday")	    true or false
-if (salary > 9000)	        true or false
-if (age < 18)	            true or false
+console.log("isActive:", isActive); // Output: true
+console.log("isDeleted:", isDeleted); // Output: false
+console.log(typeof isActive); // Output: boolean
 
-- Example :
-if (hour < 18) {
-  greeting = "Good day";
-} else {
-  greeting = "Good evening";
+console.log("\n=== COMPARISONS RETURN BOOLEANS ===");
+
+console.log(5 > 3);    // true
+console.log(5 < 3);    // false
+console.log(5 == 5);   // true
+console.log(5 != 3);   // true
+console.log(5 >= 5);   // true
+console.log(5 <= 3);   // false
+
+console.log("\n=== BOOLEAN() FUNCTION ===");
+
+console.log(Boolean(1));        // true
+console.log(Boolean(0));        // false
+console.log(Boolean("hello"));  // true
+console.log(Boolean(""));       // false
+console.log(Boolean(null));     // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean(NaN));      // false
+console.log(Boolean([]));       // true (arrays are truthy)
+console.log(Boolean({}));       // true (objects are truthy)
+
+console.log("\n=== TRUTHY VALUES ===");
+
+console.log(!!100);            // true
+console.log(!!"hello");        // true
+console.log(!!true);           // true
+console.log(!!1);              // true
+console.log(!!(-5));           // true
+console.log(!![1, 2, 3]);      // true (array)
+console.log(!!{name: "John"}); // true (object)
+
+console.log("\n=== FALSY VALUES ===");
+
+console.log(!!0);         // false
+console.log(!!"");        // false (empty string)
+console.log(!!null);      // false
+console.log(!!undefined); // false
+console.log(!!NaN);       // false
+console.log(!!false);     // false
+
+console.log("\n=== IN CONDITIONAL STATEMENTS ===");
+
+let user = "admin";
+
+if (user) {
+  console.log("User logged in"); // Output: User logged in (non-empty string is truthy)
 }
 
-* Loops :
-- Booleans are extensively used in loops to determine conditions for looping.
+let count = 0;
 
-Description	            Example
-For loop	            for (i = 0; i < 5; i++)
-While loop	            while (i < 10)
-For in loop	            for (x in person)
-For of loop	            for (x of cars)
+if (count) {
+  console.log("Items found");
+} else {
+  console.log("No items"); // Output: No items (0 is falsy)
+}
 
-- Example :
-while (i < 10) {
-  text += i;
+console.log("\n=== LOGICAL OPERATORS WITH BOOLEANS ===");
+
+let a = true;
+let b = false;
+
+console.log(a && b);    // false (AND)
+console.log(a || b);    // true (OR)
+console.log(!a);        // false (NOT)
+console.log(!b);        // true (NOT)
+
+console.log("\n=== IN LOOPS ===");
+
+let i = 0;
+while (i < 3) {
+  console.log("Loop iteration:", i);
   i++;
 }
 
-* The Boolean() Function :
-- You can use the Boolean() function to find out if an expression (or a variable) is true:
-- Example :
-Boolean(10 > 9)
+console.log("\n=== PRACTICAL EXAMPLES ===");
 
-- Or even easier:
-- Example
-(10 > 9)
+// Toggle state
+let isVisible = true;
+isVisible = !isVisible;
+console.log("isVisible after toggle:", isVisible); // Output: false
 
-* Everything With a "Value" is True :
-- Examples
-100 is true
-3.14 is true
--15 is true
-true is true
-"Hello" is true
-"false" is true
-(7 + 1 + 3.14) is true
+// Check if array is empty
+let items = [];
+console.log("Array is empty:", items.length === 0); // Output: true
 
-* Everything Without a "Value" is False :
-- Examples :
-0 is false
-"" is false
-undefined is false
-null is false
-NaN is false
-false is false
+// Authentication check
+let isAuthenticated = true;
+if (isAuthenticated) {
+  console.log("Welcome user!"); // Output: Welcome user!
+}
 
-The Boolean value of 0 (zero) is false:
-let x = 0;
-Boolean(x);
+// Multiple conditions
+let hasEmail = true;
+let hasPassword = true;
+let canLogin = hasEmail && hasPassword;
+console.log("Can login:", canLogin); // Output: true
 
-The Boolean value of -0 (minus zero) is false:
-let x = -0;
-Boolean(x);
+// Age verification
+let age = 21;
+let isOfLegalAge = age >= 18;
+console.log("Is of legal age:", isOfLegalAge); // Output: true
 
-The Boolean value of "" (empty string) is false:
-let x = "";
-Boolean(x);
+// Default values using ||
+let preferredName = "";
+let displayName = preferredName || "Guest";
+console.log("Display name:", displayName); // Output: Guest
 
-The Boolean value of undefined is false:
-let x;
-Boolean(x);
-
-The Boolean value of null is false:
-let x = null;
-Boolean(x);
-
-The Boolean value of false is (you guessed it) false:
-let x = false;
-Boolean(x);
-
-The Boolean value of NaN is false:
-let x = 10 / "Hallo";
-Boolean(x);
-
-* JavaScript Booleans as Objects :
-- Normally JavaScript booleans are primitive values created from literals:
-let x = false;
-- But booleans can also be defined as objects with the keyword new:
-let y = new Boolean(false);
-
-- Example :
-let x = false;
-let y = new Boolean(false);
-
-// typeof x returns boolean
-// typeof y returns object
-
-* Warning :
-- Do not create Boolean objects.
-- The new keyword complicates the code and slows down execution speed.
-- Boolean objects can produce unexpected results:
-
-- Booleans and boolean objects cannot be safely compared:
-let x = Boolean(false);
-let y = new Boolean(false);
-(x == Y) returns true
-(y === Y) returns false
-
-- Comparing two JavaScript objects always returns false.
-*/
+// Nullish coalescing
+let configTimeout = null;
+let defaultTimeout = configTimeout ?? 5000;
+console.log("Timeout:", defaultTimeout); // Output: 5000

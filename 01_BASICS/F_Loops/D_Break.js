@@ -1,125 +1,143 @@
-/*
-JavaScript Break
-The Break Statement
-The break statement "jumps out" of loops and switches.
+// ============================================
+// BREAK STATEMENT
+// ============================================
 
-The break statement terminates the execution of a loop or a switch statement.
+// THEORY: break exits loop or switch immediately
+// - Stops current iteration and loop
+// - Control jumps to statement after loop/switch
+// - Used in: for, while, do...while, switch
 
-Break in Loops
-When break is encountered in a loop, the loop terminates immediately.
+// THEORY: Labeled break (advanced)
+// - break label: exits labeled block
+// - Used in nested loops to break outer loop
+// - Rarely needed in modern code
 
-The program control is transfered to the statements following the loop.
+// THEORY: Best practices:
+// - Use break to exit on specific condition
+// - Often paired with if statement
+// - Make condition clear and meaningful
 
-No more loop iterations are executed.
+// ============================================
+// WORKING EXAMPLES
+// ============================================
 
-Example
-Terminate the loop (break the loop) when the loop counter (i) is 3:
+console.log("=== BREAK IN FOR LOOP ===");
 
 for (let i = 0; i < 10; i++) {
-  if (i === 3) { break; }
-  text += "The number is " + i + "<br>";
+  if (i === 5) {
+    console.log("Breaking at i =", i);
+    break;  // Exit loop immediately
+  }
+  console.log("i =", i);  // 0, 1, 2, 3, 4
 }
-Note
-You have already seen the break statement used in an earlier chapter of this tutorial.
 
-It was used to "jump out" of a switch statement.
+console.log("\n=== BREAK IN WHILE LOOP ===");
 
-Break in a Switch
-In a switch statement, a break statement will exit the switch block after a matching case is executed. Without break, execution would "fall through" to subsequent case blocks.
-
-Example
-Use the weekday number to calculate the weekday name:
-
-switch (new Date().getDay()) {
-  case 0:
-    day = "Sunday";
+let i = 0;
+while (true) {
+  if (i === 3) {
+    console.log("Breaking out of while");
     break;
+  }
+  console.log("While i =", i);  // 0, 1, 2
+  i++;
+}
+
+console.log("\n=== BREAK IN SWITCH ===");
+
+let day = 2;
+switch (day) {
   case 1:
-    day = "Monday";
-    break;
+    console.log("Monday");
+    break;  // Exit switch
   case 2:
-     day = "Tuesday";
+    console.log("Tuesday");  // Output: Tuesday
     break;
   case 3:
-    day = "Wednesday";
+    console.log("Wednesday");
     break;
-  case 4:
-    day = "Thursday";
+  default:
+    console.log("Other day");
+}
+
+console.log("\n=== SEARCH AND BREAK ===");
+
+const fruits = ["apple", "banana", "cherry", "date"];
+let searchFor = "cherry";
+let found = false;
+
+for (let i = 0; i < fruits.length; i++) {
+  if (fruits[i] === searchFor) {
+    console.log("Found", searchFor, "at index", i);
+    found = true;
+    break;  // No need to continue searching
+  }
+}
+
+console.log("\n=== BREAK IN NESTED LOOPS ===");
+
+for (let i = 1; i <= 3; i++) {
+  for (let j = 1; j <= 3; j++) {
+    if (j === 2) {
+      console.log("Breaking inner loop at i=" + i + ", j=" + j);
+      break;  // Only breaks inner loop
+    }
+    console.log("i=" + i + ", j=" + j);
+  }
+}
+
+console.log("\n=== LABELED BREAK (ADVANCED) ===");
+
+outerLoop: for (let i = 1; i <= 3; i++) {
+  for (let j = 1; j <= 3; j++) {
+    if (j === 2) {
+      console.log("Breaking outer loop");
+      break outerLoop;  // Breaks out of outer loop
+    }
+    console.log("i=" + i + ", j=" + j);
+  }
+}
+
+console.log("\n=== PRACTICAL: FINDING FIRST MULTIPLE ===");
+
+console.log("Finding first multiple of 7 between 1-100:");
+for (let i = 1; i <= 100; i++) {
+  if (i % 7 === 0) {
+    console.log("First multiple: ", i);  // Output: 7
     break;
-  case 5:
-    day = "Friday";
-    break;
-  case 6:
-    day = "Saturday";
+  }
 }
-Note
-The break keyword is crucial for preventing a switch "fall-through."
 
-Without break, the code will continue to execute the next case blocks (and the default block if present) even if their values do not match the expression.
+console.log("\n=== PRACTICAL: USER VALIDATION ===");
 
-ADVERTISEMENT
+function findUser(userId) {
+  const users = [
+    { id: 1, name: "Alice" },
+    { id: 2, name: "Bob" },
+    { id: 3, name: "Charlie" },
+    { id: 4, name: "David" }
+  ];
 
-REMOVE ADS
-
-JavaScript Labels
-A label provides a name for a statement, or a block of statements, allowing statements to be referenced to, for program flow control, particularly in loops.
-
-Syntax
-A label is an identifier followed by a colon (:).
-
-labelname: statement;
-A label precedes a statement or a block of code.
-
-labelname: {
-  statements
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].id === userId) {
+      console.log("User found:", users[i].name);
+      return;  // Alternative to break
+    }
+  }
+  console.log("User not found");
 }
-Labeled Break
-Syntax
-break labelname;
-The break statement exits a loop or block and transfers the control to the labeled statement.
 
-The break statement is particularly useful for breaking out of inner or outer loops from nested loops.
+findUser(2);  // Output: User found: Bob
+findUser(99);  // Output: User not found
 
-Example
-Break to loop1:
+console.log("\n=== WITHOUT BREAK (INEFFICIENT) ===");
 
-let text = "";
-
-loop1: for (let j = 1; j < 5; j++) {
-  loop2: for (let i = 1; i < 5; i++) {
-    if (i === 3) { break loop1; }
-    text += i;
-   }
+let sum = 0;
+for (let i = 0; i < 100; i++) {
+  sum += i;
+  // Without break, loops continues even after finding value
+  if (i === 10) {
+    console.log("Sum up to 10:", sum);
+    // Missing break - continues looping!
+  }
 }
-Example
-Break to loop2:
-
-let text = "";
-
-loop1: for (let j = 1; j < 5; j++) {
-  loop2: for (let i = 1; i < 5; i++) {
-    if (i === 3) { break loop2; }
-    text += i;
-   }
-}
-Note
-break and continue are the only JavaScript statements that can "jump out of" a code block.
-
-A code block is a block of code between { and }.
-
-Without a label reference, break can only jump out of a loop or a switch.
-
-With a label reference, break can jump out of any code block:
-
-Example
-Break out of the block after the second car:
-
-const cars = ["BMW", "Volvo", "Saab", "Ford"];
-list: {
-  text += cars[0] + "<br>";
-  text += cars[1] + "<br>";
-  break list;
-  text += cars[2] + "<br>";
-  text += cars[3] + "<br>";
-}
-*/

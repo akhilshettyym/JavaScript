@@ -1,65 +1,73 @@
-/*
+// ============================================
+// JAVASCRIPT VARIABLES FUNDAMENTALS
+// ============================================
 
-Hoisting - Hoisting refers to the mechanism whereby the interpreter appears to move the declarations of functions, variables, and classes to the top of their scope before the code is executed. This is not a literal physical movement of code but rather a result of JavaScript's two-pass compilation phase where memory is allocated for declarations before the execution phase begins.
+// THEORY: Variables are named containers storing data
+// - Used to store values that can change during program execution
+// - Give data meaningful names making code more readable
 
-* JavaScript Variables :
-- Variables = Data Containers
-- JavaScript variables are containers for data.
+// THEORY: JavaScript has 3 ways to declare variables:
+// 1. let - Block-scoped, cannot be redeclared (modern, recommended)
+// 2. const - Block-scoped, cannot be reassigned (use when value doesn't change)
+// 3. var - Function-scoped, can be redeclared (old, avoid in modern code)
 
-- JavaScript variables can be declared in 4 ways:
-Modern JavaScript :
-- Using let
-- Using const
-Older JavaScript :
-- Using var (Not Recommended)
-- Automatically (Not Recommended)
+// THEORY: Identifier rules for variable names:
+// - Must start with letter, underscore (_), or dollar sign ($)
+// - Can contain letters, numbers, underscores, dollar signs
+// - Cannot be reserved keywords (if, for, let, const, etc.)
+// - Case-sensitive: myVar and myvar are different
 
-* JavaScript Identifiers :
-- Variables are identified with unique names called identifiers.
-- Names can be short like x, y, z.
-- Names can be descriptive age, sum, carName.
-- The rules for constructing names (identifiers) are:
-  - Names can contain letters, digits, underscores, and dollar signs.
-  - Names must begin with a letter, a $ sign or an underscore (_).
-  - Names are case sensitive (X is different from x).
-  - Reserved words (JavaScript keywords) cannot be used as names.
+// THEORY: Naming conventions:
+// - Use descriptive names: firstName (good) vs fn (bad)
+// - Use camelCase: myVariableName (JavaScript standard)
+// - Avoid single letters except in loops: let i;
 
-Note :
-- Numbers are not allowed as the first character in names.
-- This way JavaScript can easily distinguish identifiers from numbers.
+// ============================================
+// WORKING EXAMPLES
+// ============================================
 
-* JavaScript Underscore (_) :
-- JavaScript treats underscore as a letter.
-- Identifiers containing _ are valid variable names:
-Example :
-- let _lastName = "Johnson";
-- let _x = 2;
-- let _100 = 5;
+// Declaring variables with let
+let carName;  // Declaration without initialization
+console.log(carName); // Output: undefined
 
-- A convention among professional programmers is to start a name with underscore for "private" variables.
+// Declaration with initialization
+let age = 25;
+console.log(age); // Output: 25
 
-* JavaScript Dollar Sign $ :
-- JavaScript also treats a dollar sign as a letter.
-- Identifiers containing $ are valid variable names:
-Example :
-- let $ = "Hello World";
-- let $$$ = 2;
-- let $myMoney = 5;
+// Multiple variables in one statement
+let x = 5, y = 10, z = 15;
+console.log(x + y + z); // Output: 30
 
-- Using the $ is not very common in JavaScript, but professional programmers often use it as an alias for the main function in JavaScript libraries.
+// Changing variable values (reassignment)
+let score = 100;
+console.log(score); // Output: 100
+score = 95;
+console.log(score); // Output: 95
 
-* Declaring JavaScript Variables :
-- Creating a variable in JavaScript is called declaring a variable.
+// Using underscore and dollar sign in variable names
+let _privateVar = "private";
+let $special = "special";
+let _userId123 = 456;
+console.log(_privateVar, $special, _userId123);
 
-You declare a JavaScript variable with the let keyword or the const keyword.
+// Descriptive variable names make code clear
+let firstName = "John";
+let lastName = "Doe";
+let fullName = firstName + " " + lastName;
+console.log(fullName); // Output: John Doe
 
-* Declaring a Variable Using let :
-- let carName;
+// Variable naming best practices
+let userEmail = "john@example.com";  // ✓ Clear and descriptive
+let ue = "john@example.com";          // ✗ Too abbreviated
+let user_email = "john@example.com";  // ✗ Snake case (not JavaScript convention)
+let UserEmail = "john@example.com";   // ✗ Pascal case (for classes, not variables)
 
-* When to Use var, let, or const?
-1. Always declare variables
-2. Always use const if the value should not be changed
-3. Always use const if the type should not be changed (Arrays and Objects)
-4. Only use let if you cannot use const
-5. Never use var if you can use let or const.
-*/
+// Variables store different types of data
+let numberVar = 42;
+let stringVar = "Hello";
+let booleanVar = true;
+let arrayVar = [1, 2, 3];
+let objectVar = { name: "John", age: 30 };
+console.log(typeof numberVar);   // Output: number
+console.log(typeof stringVar);   // Output: string
+console.log(typeof booleanVar);  // Output: boolean

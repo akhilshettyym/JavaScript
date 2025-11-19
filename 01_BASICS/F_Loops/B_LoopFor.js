@@ -1,118 +1,124 @@
-/*
-JavaScript For Loop
-For Loops can execute a block of code a number of times.
+// ============================================
+// FOR LOOP - DETAILED
+// ============================================
 
-For Loops are fundamental for tasks like performing an action multiple times.
+// THEORY: For loop repeats code block a known number of times
+// - Syntax: for (init; condition; update) { code }
+// - init: Initialize counter (executed once)
+// - condition: Test before each iteration
+// - update: Change counter after each iteration
 
-The For Loop
-The for statement creates a loop with 3 optional expressions:
+// THEORY: Loop execution order:
+// 1. Initialize counter (let i = 0)
+// 2. Check condition (i < 5)
+// 3. Execute code block
+// 4. Update counter (i++)
+// 5. Repeat steps 2-4
 
-for (exp 1; exp 2; exp 3) {
-  // code block to be executed
-}
-exp 1 is executed (one time) before the execution of the code block.
+// THEORY: Loop scope with let vs var
+// - let: Block-scoped (i only exists in loop)
+// - var: Function-scoped (i leaks out)
+// - Always use let for loop variables
 
-exp 2 defines the condition for executing the code block.
+// ============================================
+// WORKING EXAMPLES
+// ============================================
 
-exp 3 is executed (every time) after the code block has been executed.
+console.log("=== BASIC FOR LOOP ===");
 
-Example
 for (let i = 0; i < 5; i++) {
-  text += "The number is " + i + "<br>";
+  console.log("Number:", i);
 }
-From the example above, you can read:
+// Output: Number: 0, 1, 2, 3, 4
 
-exp 1 sets a variable before the loop starts (let i = 0).
-
-exp 2 defines the condition for the loop to run (i must be less than 5).
-
-exp 3 increases a value (i++) after the code block has been executed.
-
-Example
-Use a for loop to collect the car names from the cars array:
+console.log("\n=== FOR LOOP WITH ARRAY ===");
 
 const cars = ["BMW", "Volvo", "Saab", "Ford"];
-let len = cars.length;
-
-let text = "";
-for (let i = 0; i < len; i++) {
-  text += cars[i];
+for (let i = 0; i < cars.length; i++) {
+  console.log(cars[i]);
 }
-How to use exp 1
-exp 1 is used to initialize the variable(s) used in the loop (let i = 0).
+// Output: BMW, Volvo, Saab, Ford
 
-exp 1 is optional.
+console.log("\n=== LOOP EXPRESSIONS EXPLAINED ===");
 
-You can omit exp 1 if the value is set before the loop starts:
-
-Example
-const cars = ["BMW", "Volvo", "Saab", "Ford"];
-let len = cars.length;
-
-let i = 2;
-
-let text = "";
-for (; i < len; i++) {
-  text += cars[i] + "<br>";
+// Expression 1: Initialize
+// Expression 2: Condition
+// Expression 3: Update
+for (let i = 1; i <= 3; i++) {
+  console.log("i =", i); // i = 1, 2, 3
 }
-How to use exp 2
-exp 2 is used to evaluate the condition of the initial variable (i < len).
 
-exp 2 is also optional.
+console.log("\n=== LOOP SCOPE - LET vs VAR ===");
 
-If exp 2 returns false, the loop will end.
+// With let (recommended)
+for (let x = 0; x < 3; x++) {
+  // x only exists here
+}
+// console.log(x);  // ✗ ERROR: x is not defined
 
-Note
-If you omit exp 2, you must provide a break inside the loop.
+// With var (old way - avoid)
+for (var y = 0; y < 3; y++) {
+  // y exists here
+}
+console.log("After loop, y =", y); // Output: After loop, y = 3 (leaked!)
 
-Otherwise the loop will never end.
+console.log("\n=== SKIPPING LOOP EXPRESSIONS ===");
 
-This will crash your browser.
+// Can skip expression 1 (initialize before)
+let start = 0;
+for (; start < 3; start++) {
+  console.log("Skipped init:", start); // 0, 1, 2
+}
 
-How to use exp 3
-exp 3 increments the value of the initial variable (i++).
-
-exp 3 is optional.
-
-exp 3 can do anything like negative increment (i--), positive increment (i = i + 15), or anything else.
-
-exp 3 can be omitted (if you increment the value inside the loop):
-
-Example
-const cars = ["BMW", "Volvo", "Saab", "Ford"];
-let len = cars.length;
-
-let i = 0;
-
-let text = "";
-for (; i < len; ) {
-  text += cars[i] + "<br>";
+// Can skip expression 3 (update inside)
+for (let i = 0; i < 3; ) {
+  console.log("Skipped update:", i);
   i++;
 }
-Loop Scope
-Using var in a loop:
 
-Example
-var i = 5;
+console.log("\n=== COUNTING BACKWARDS ===");
 
-for (var i = 0; i < 10; i++) {
-  // some code
+for (let i = 5; i > 0; i--) {
+  console.log("Countdown:", i); // 5, 4, 3, 2, 1
 }
 
-// Here i is 10
-Using let in a loop:
+console.log("\n=== INCREMENTING BY DIFFERENT AMOUNTS ===");
 
-Example
-let i = 5;
-
-for (let i = 0; i < 10; i++) {
-  // some code
+for (let i = 0; i <= 10; i += 2) {
+  console.log("Even numbers:", i); // 0, 2, 4, 6, 8, 10
 }
 
-// Here i is 5
-In the first example, using var, the variable declared in the loop redeclares the variable outside the loop.
+for (let i = 10; i >= 0; i -= 3) {
+  console.log("Decreasing by 3:", i); // 10, 7, 4, 1
+}
 
-In the second example, using let, the variable declared in the loop does not redeclare the variable outside the loop.
+console.log("\n=== NESTED LOOPS ===");
 
-When let is used to declare the i variable in a loop, the i variable will only be visible within the loop.
-*/
+for (let i = 1; i <= 3; i++) {
+  for (let j = 1; j <= 2; j++) {
+    console.log(`i=${i}, j=${j}`);
+  }
+}
+
+console.log("\n=== MULTIPLICATION TABLE ===");
+
+for (let i = 1; i <= 5; i++) {
+  console.log(`5 × ${i} = ${5 * i}`);
+}
+
+console.log("\n=== PRACTICAL: COLLECTING DATA ===");
+
+let sum = 0;
+for (let i = 1; i <= 5; i++) {
+  sum += i;
+}
+console.log("Sum of 1-5:", sum); // Output: 15
+
+console.log("\n=== PRACTICAL: FINDING VALUES ===");
+
+const numbers = [10, 25, 8, 42, 15];
+for (let i = 0; i < numbers.length; i++) {
+  if (numbers[i] > 20) {
+    console.log("Found:", numbers[i]); // Output: Found: 25, 42
+  }
+}

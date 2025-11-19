@@ -1,150 +1,173 @@
-/*
-JavaScript Strings
-Strings are for storing text
+/**
+ * STRINGS: Text data type for storing sequences of characters
+ * Creation:
+ * - Single quotes: 'text'
+ * - Double quotes: "text"
+ * - Backticks (template literal): `text ${variable}`
+ * 
+ * Key: Strings are immutable - each operation creates new string
+ */
 
-Strings are written with quotes
+// ============= CREATING STRINGS =============
+console.log("--- CREATING STRINGS ---");
 
-Using Quotes
-A JavaScript string is zero or more characters written inside quotes.
+let str1 = "Double quotes";
+let str2 = 'Single quotes';
+let str3 = `Template literal`;
 
-Example
-let text = "John Doe";
-You can use single or double quotes:
+console.log(str1);
+console.log(str2);
+console.log(str3);
 
-Example
-let carName1 = "Volvo XC60";  // Double quotes
-let carName2 = 'Volvo XC60';  // Single quotes
-Note
-Strings created with single or double quotes work the same.
+// All are equivalent
+console.log(str1 === str2 ? "Same type" : "Different");
 
-There is no difference between the two.
+// ============= QUOTES INSIDE STRINGS =============
+console.log("\n--- QUOTES INSIDE STRINGS ---");
 
-Quotes Inside Quotes
-You can use quotes inside a string, as long as they don't match the quotes surrounding the string:
+let quote1 = "He said 'Hello'";
+let quote2 = 'She said "Hi"';
+let quote3 = `She said "Hello" and I said 'Hi'`;
 
-Example
-let answer1 = "It's alright";
-let answer2 = "He is called 'Johnny'";
-let answer3 = 'He is called "Johnny"';
-Template Strings
-Templates were introduced with ES6 (JavaScript 2016).
+console.log(quote1);
+console.log(quote2);
+console.log(quote3);
 
-Templates are strings enclosed in backticks (`This is a template string`).
+// Escaping quotes
+let escaped1 = "He said \"Hello\"";
+let escaped2 = 'It\'s a beautiful day';
+let escaped3 = "Path: C:\\Users\\John";
 
-Templates allow single and double quotes inside a string:
+console.log(escaped1);
+console.log(escaped2);
+console.log(escaped3);
 
-Example
-let text = `He's often called "Johnny"`;
+// ============= STRING LENGTH =============
+console.log("\n--- STRING LENGTH ---");
 
-String Length
-To find the length of a string, use the built-in length property:
+let text = "JavaScript";
+console.log("Text:", text);
+console.log("Length:", text.length); // 10
 
-Example
-let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let length = text.length;
-Escape Characters
-Because strings must be written within quotes, JavaScript will misunderstand this string:
+// Empty string
+let emptyStr = "";
+console.log("Empty string length:", emptyStr.length); // 0
 
-let text = "We are the so-called "Vikings" from the north.";
-The string will be chopped to "We are the so-called ".
+// ============= ACCESSING CHARACTERS =============
+console.log("\n--- ACCESSING CHARACTERS ---");
 
-To solve this problem, you can use an backslash escape character.
+let str = "Hello";
+console.log("First character:", str[0]); // H
+console.log("Last character:", str[str.length - 1]); // o
+console.log("Character at index 1:", str[1]); // e
 
-The backslash escape character (\) turns special characters into string characters:
+// String methods
+console.log("charAt(2):", str.charAt(2)); // l
+console.log("charCodeAt(0):", str.charCodeAt(0)); // 72 (ASCII)
 
-Code	Result	Description
-\'	'	Single quote
-\"	"	Double quote
-\\	\	Backslash
-Examples
-\" inserts a double quote in a string:
+// ============= STRING CONCATENATION =============
+console.log("\n--- CONCATENATION ---");
 
+let firstName = "John";
+let lastName = "Doe";
 
-let text = "We are the so-called \"Vikings\" from the north.";
-\' inserts a single quote in a string:
+// Using +
+let full1 = firstName + " " + lastName;
+console.log("Using +:", full1);
 
+// Using += assignment
+let message = "Hello";
+message += " ";
+message += "World";
+console.log("Using +=:", message);
 
-let text= 'It\'s alright.';
-\\ inserts a backslash in a string:
+// Using template literals
+let full2 = `${firstName} ${lastName}`;
+console.log("Using template:", full2);
 
+// ============= TEMPLATE LITERALS =============
+console.log("\n--- TEMPLATE LITERALS (Backticks) ---");
 
-let text = "The character \\ is called backslash.";
-Six other escape sequences are valid in JavaScript:
+let name = "Alice";
+let age = 25;
+let city = "New York";
 
-Code	Result
-\b	Backspace
-\f	Form Feed
-\n	New Line
-\r	Carriage Return
-\t	Horizontal Tabulator
-\v	Vertical Tabulator
-Note
-The 6 escape characters above were originally designed to control typewriters, teletypes, and fax machines. They do not make any sense in HTML.
+let bio = `Name: ${name}
+Age: ${age}
+City: ${city}`;
 
-ADVERTISEMENT
+console.log(bio);
 
-REMOVE ADS
+// Expressions in templates
+console.log(`Math: 5 + 3 = ${5 + 3}`);
+console.log(`Comparison: 10 > 5 is ${10 > 5}`);
 
-Breaking Long Lines
-For readability, programmers often like to avoid long code lines.
+// ============= ESCAPE SEQUENCES =============
+console.log("\n--- ESCAPE SEQUENCES ---");
 
-A safe way to break up a statement is after an operator:
+console.log("Newline:\\nSecond line");
+console.log("Tab:\tIndented");
+console.log("Backslash: \\");
+console.log("Backspace example: Hello\\bWorld");
+console.log("Single quote: \\'");
+console.log("Double quote: \\\"");
 
-Example
-document.getElementById("demo").innerHTML =
-"Hello Dolly!";
-A safe way to break up a string is by using string addition:
+// ============= STRING IMMUTABILITY =============
+console.log("\n--- STRING IMMUTABILITY ---");
 
-Example
-document.getElementById("demo").innerHTML = "Hello " +
-"Dolly!";
-Template Strings
-Templates were introduced with ES6 (JavaScript 2016).
+let original = "Hello";
+console.log("Original:", original);
 
-Templates are strings enclosed in backticks (`This is a template string`).
+// Strings are immutable - methods create new strings
+let upper = original.toUpperCase();
+console.log("Original unchanged:", original);
+console.log("New uppercase string:", upper);
 
-Templates allow multiline strings:
+// ============= STRING METHODS (BASIC) =============
+console.log("\n--- COMMON STRING METHODS ---");
 
-Example
-let text =
-`The quick
-brown fox
-jumps over
-the lazy dog`;
+// let str2 = "  JavaScript Programming  ";
 
-JavaScript Strings as Objects
-Normally, JavaScript strings are primitive values, created from literals:
+console.log("toUpperCase():", str2.toUpperCase());
+console.log("toLowerCase():", str2.toLowerCase());
+console.log("trim():", `"${str2.trim()}"`); // Remove whitespace
+console.log("length:", str2.length);
 
-let x = "John";
-But strings can also be defined as objects with the keyword new:
+// ============= MULTILINE STRINGS =============
+console.log("\n--- MULTILINE STRINGS ---");
 
-let y = new String("John");
-Example
-let x = "John";
-let y = new String("John");
-Do not create String objects.
+// Template literals support multiline
+let poem = `
+  Roses are red,
+  Violets are blue,
+  Strings in JavaScript,
+  Make coding easy too.
+`;
+console.log(poem);
 
-The new keyword complicates the code and slows down execution speed.
+// String concatenation approach (old way)
+let multiLine = "Line 1\n" +
+                "Line 2\n" +
+                "Line 3";
+console.log(multiLine);
 
-String objects can produce unexpected results:
+// ============= STRING COERCION =============
+console.log("\n--- STRING COERCION ---");
 
-When using the == operator, x and y are equal:
+console.log("Number + String:", 5 + "5"); // "55" (coerced to string)
+console.log("String + Number:", "5" + 5); // "55"
+console.log("String * Number:", "5" * 5); // 25 (coerced to number)
+console.log("String - Number:", "10" - 3); // 7 (coerced to number)
 
-let x = "John";
-let y = new String("John");
-When using the === operator, x and y are not equal:
+// Converting to string
+let num = 42;
+let str4 = String(num);
+console.log("String(42):", str4, typeof str4);
 
-let x = "John";
-let y = new String("John");
-Note the difference between (x==y) and (x===y).
+let str5 = num.toString();
+console.log("toString():", str5, typeof str5);
 
-(x == y) true or false?
-
-let x = new String("John");
-let y = new String("John");
-(x === y) true or false?
-
-let x = new String("John");
-let y = new String("John");
-Comparing two JavaScript objects always returns false.
-*/
+console.log("\n✓ Strings are immutable");
+console.log("✓ Use template literals for readability");
+console.log("✓ Backticks support multiline and interpolation");
+console.log("✓ Escape sequences for special characters");

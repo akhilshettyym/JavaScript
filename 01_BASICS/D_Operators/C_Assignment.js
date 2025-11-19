@@ -1,147 +1,157 @@
-/*
-* JavaScript Assignment :
+// ============================================
+// ASSIGNMENT OPERATORS
+// ============================================
 
-* JavaScript Assignment Operators :
-- Assignment operators assign values to JavaScript variables.
-- Given that x = 10 and y = 5, the table below explains the assignment operators:
+// THEORY: Assignment operators assign values to variables
+// - = : Simple assignment
+// - += : Add and assign (x += y is x = x + y)
+// - -= : Subtract and assign
+// - *= : Multiply and assign
+// - /= : Divide and assign
+// - %= : Modulus and assign
+// - ** = : Exponentiation and assign
 
-Operator	    Example	        Same As	        Result
-=	            x = y	        x = y	        x = 5
-+=	            x += y	        x = x + y	    x = 15
--=	            x -= y	        x = x - y	    x = 5
-*=	            x *= y	        x = x * y	    x = 50
-**=	            x **= y	        x = x ** y	    x = 100000
-/=	            x /= y	        x = x / y	    x = 2
-%=	            x %= y	        x = x % y	    x = 0
-:	            x: 45	        size.x = 45	    x = 45
+// THEORY: Logical Assignment Operators (ES2020+)
+// - &&= : Assign only if value is truthy
+// - ||= : Assign only if value is falsy
+// - ??= : Assign only if value is null/undefined
 
-* Logical Assignment Operators :
-Operator	    Example	        Result
-&&=	            true &&= 10	    x = 10
-||=	            false ||= 10	x = 10
-??=	            null ??= 10	    x = 10
+// THEORY: Spread Operator (...)
+// - Expands array or iterable elements
+// - Useful for unpacking values
 
-* The = Operator :
-- The Simple Assignment Operator assigns a simple value to a variable.
-- Simple Assignment Examples
+// ============================================
+// WORKING EXAMPLES
+// ============================================
+
+console.log("=== BASIC ASSIGNMENT ===");
 let x = 10;
-let x = 10 + y;
+console.log("x = 10; // x:", x);
 
-- The += Operator :
-- The Addition Assignment Operator adds a value to a variable.
-let x = 10;
-x += 5;
+// COMPOUND ASSIGNMENT OPERATORS
+console.log("\n=== COMPOUND ASSIGNMENT (+=, -=, etc.) ===");
 
-- The -= Operator :
-- The Subtraction Assignment Operator subtracts a value from a variable.
-let x = 10;
-x -= 5;
+// Addition Assignment
+let num = 10;
+num += 5;  // Same as: num = num + 5
+console.log("num += 5 →", num); // Output: 15
 
-- The *= Operator :
-- The Multiplication Assignment Operator multiplies a variable.
-let x = 10;
-x *= 5;
+// Subtraction Assignment
+num = 15;
+num -= 5;  // Same as: num = num - 5
+console.log("num -= 5 →", num); // Output: 10
 
-- The **= Operator :
-- The Exponentiation Assignment Operator raises a variable to the power of the operand.
-let x = 10;
-x **= 5;
+// Multiplication Assignment
+num = 10;
+num *= 5;  // Same as: num = num * 5
+console.log("num *= 5 →", num); // Output: 50
 
-- The /= Operator :
-- The Division Assignment Operator divides a variable.
-let x = 10;
-x /= 5;
+// Division Assignment
+num = 50;
+num /= 5;  // Same as: num = num / 5
+console.log("num /= 5 →", num); // Output: 10
 
-- The %= Operator :
-- The Remainder Assignment Operator assigns a remainder to a variable.
-let x = 10;
-x %= 5;
+// Modulus Assignment
+num = 17;
+num %= 5;  // Same as: num = num % 5
+console.log("num %= 5 →", num); // Output: 2
 
-* String Assignment :
-- Two assignment operators can assign values to strings:
-- The Simple Assignment Operator assigns a simple value to a string.
-- The Addition Assignment Operator adds a value to a string.
+// Exponentiation Assignment
+num = 2;
+num **= 3;  // Same as: num = num ** 3
+console.log("num **= 3 →", num); // Output: 8
 
-- The = Operator :
-- The Simple Assignment Operator assigns a value to a variable.
-String Assignment
+// STRING ASSIGNMENT
+console.log("\n=== STRING ASSIGNMENT ===");
 let text = "Hello";
+console.log(text); // Output: Hello
 
-- The += Operator :
-- The Addition Assignment Operator Can also be used to add strings.
-let text = "Hello"; text += " World";
+text += " World";  // Concatenate and assign
+console.log("text += ' World' →", text); // Output: Hello World
 
-- The &&= Operator :
-- The Logical AND assignment operator is used between two values.
-If the first value is true, the second value is assigned.
+// LOGICAL AND ASSIGNMENT (&&=)
+console.log("\n=== LOGICAL AND ASSIGNMENT (&&=) ===");
+// Only assigns if first value is truthy
 
-Logical AND Assignment Examples
-let x = true;
-let y = x &&= 10;
+let val1 = 1;
+let result1 = (val1 &&= 10);
+console.log("(1 &&= 10) →", result1); // Output: 10
 
-let x = false;
-let y = x &&= 10;
+let val2 = 0;
+let result2 = (val2 &&= 10);
+console.log("(0 &&= 10) →", result2); // Output: 0
 
-let x = 1;
-let y = x &&= 10;
+let val3 = true;
+let result3 = (val3 &&= "assigned");
+console.log("(true &&= 'assigned') →", result3); // Output: assigned
 
-let x = 0;
-let y = x &&= 10;
+// LOGICAL OR ASSIGNMENT (||=)
+console.log("\n=== LOGICAL OR ASSIGNMENT (||=) ===");
+// Only assigns if first value is falsy
 
-let x = undefined;
-let y = x &&= 10;
+let val4 = 0;
+let result4 = (val4 ||= 10);
+console.log("(0 ||= 10) →", result4); // Output: 10
 
-let x = null;
-let y = x &&= 10;
+let val5 = 5;
+let result5 = (val5 ||= 10);
+console.log("(5 ||= 10) →", result5); // Output: 5
 
-- Note : The &&= operator is an ES2020 feature.
+let val6 = null;
+let result6 = (val6 ||= "default");
+console.log("(null ||= 'default') →", result6); // Output: default
 
-- The ||= Operator :
-- The Logical OR assignment operator is used between two values.
-- If the first value is false, the second value is assigned.
+// NULLISH COALESCING ASSIGNMENT (??=)
+console.log("\n=== NULLISH COALESCING ASSIGNMENT (??=) ===");
+// Only assigns if first value is null or undefined
 
-Logical OR Assignment Examples
-let x = false;
-let y = x ||= 10;
+let val7;
+val7 ??= "default value";
+console.log("undefined ??= 'default value' →", val7); // Output: default value
 
-let x = true;
-let y = x ||= 10;
+let val8 = 0;
+val8 ??= 10;
+console.log("0 ??= 10 →", val8); // Output: 0 (0 is not null/undefined)
 
-let x = null;
-let y = x ||= 10;
+let val9 = null;
+val9 ??= "replaced";
+console.log("null ??= 'replaced' →", val9); // Output: replaced
 
-let x = undefined;
-let y = x ||= 10;
+// SPREAD OPERATOR (...)
+console.log("\n=== SPREAD OPERATOR (...) ===");
 
-- Note : The ||= operator is an ES2020 feature.
+// Spread array elements
+let arr = [1, 2, 3];
+console.log(Math.max(...arr)); // Output: 3 (spreads to Math.max(1, 2, 3))
+console.log(Math.min(...arr)); // Output: 1
 
-- The ??= Operator :
-- The Nullish coalescing assignment operator is used between two values.
-- If the first value is undefined or null, the second value is assigned.
-let x;
-x ??= 10;
+// Spread string characters
+let text2 = "hello";
+let chars = [...text2];
+console.log(chars); // Output: [ 'h', 'e', 'l', 'l', 'o' ]
 
-let x = 0;
-x ??= 10;
+// Copy array using spread
+let original = [1, 2, 3];
+let copy = [...original];
+copy[0] = 99;
+console.log("Original:", original); // Output: [1, 2, 3]
+console.log("Copy:", copy); // Output: [99, 2, 3]
 
-let x = null;
-x ??= 10;
+// PRACTICAL EXAMPLES
+console.log("\n=== PRACTICAL EXAMPLES ===");
 
-let x = undefined;
-x ??= 10;
+// Calculate total with compound assignment
+let total = 100;
+total += 50;  // Add discount subtotal
+total -= 10;  // Subtract coupon
+total *= 1.08; // Apply tax
+console.log("Final total:", total.toFixed(2)); // Output: 151.20
 
-let x = 10;
-let y = 5;
-x ??= y;
+// Use logical assignments for defaults
+let config = { timeout: null };
+config.timeout ??= 5000; // Set default if null
+console.log("Timeout:", config.timeout); // Output: 5000
 
-- Note : The ??= operator is an ES2020 feature.
-
-* The Spread (...) Operator :
-- The ... operator splits iterables into individual elements.
-
-- Example :
-let text = "12345";
-
-let min = Math.min(...text);
-let max = Math.max(...text);
-*/
+let userRole = null;
+userRole ??= "guest"; // Set default role
+console.log("User role:", userRole); // Output: guest

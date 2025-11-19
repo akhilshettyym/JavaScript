@@ -1,132 +1,108 @@
-/* 
-* JavaScript Datatypes :
-- JavaScript has 8 Datatypes :
+// ============================================
+// JAVASCRIPT DATA TYPES
+// ============================================
 
-- A JavaScript variable can hold 8 types of data:
+// THEORY: JavaScript has 8 primitive data types:
+// 1. String - Text enclosed in quotes
+// 2. Number - Integer or decimal values
+// 3. BigInt - Very large integers (beyond Number range)
+// 4. Boolean - true or false
+// 5. Undefined - Variable declared but not assigned
+// 6. Null - Intentional absence of value
+// 7. Symbol - Unique identifier (advanced, rarely used)
+// 8. Object - Collection of key-value pairs (arrays, objects, etc.)
 
-* Type	            Description
-- String	        A text of characters enclosed in quotes
-- Number	        A number representing a mathematical value
-- Bigint	        A number representing a large integer
-- Boolean	        A data type representing true or false
-- Object	        A collection of key-value pairs of data
-- Undefined	        A primitive variable with no assigned value
-- Null	            A primitive value representing object absence
-- Symbol	        A unique and primitive identifier
+// THEORY: Primitive vs Reference types:
+// - Primitive types: String, Number, Boolean, Undefined, Null, Symbol, BigInt
+// - Reference types: Object, Array, Function (stored as objects)
 
-- Examples :
+// THEORY: typeof operator checks data type
+// - Returns string with type name
+// - Helpful for debugging and type checking
 
-// String
-let color = "Yellow";
-let lastName = "Johnson";
+// ============================================
+// WORKING EXAMPLES
+// ============================================
 
-// Number
-let length = 16;
-let weight = 7.5;
+// STRING type - text data
+let message = "Hello World";
+let name = 'John Doe';
+let quote = `Template string: "Hello" + 'World'`;
+console.log(typeof message);  // Output: string
 
-// BigInt
-let x = 1234567890123456789012345n;
-let y = BigInt(1234567890123456789012345)
+// NUMBER type - integers and decimals
+let age = 30;
+let height = 5.9;
+let temperature = -10;
+let pi = 3.14159;
+console.log(typeof age); // Output: number
+console.log(100 / 0); // Output: Infinity (special number value)
+console.log(0 / 0);   // Output: NaN (Not a Number)
 
-// Boolean
-let x = true;
-let y = false;
+// BIGINT type - extremely large numbers
+let largeNumber = 1234567890123456789012345n;  // Note: 'n' suffix
+let anotherBigInt = BigInt(9007199254740991);
+console.log(typeof largeNumber); // Output: bigint
 
-// Object
-const person = {firstName:"John", lastName:"Doe"};
+// BOOLEAN type - true or false only
+let isActive = true;
+let isDeleted = false;
+let isValid = 1 === 1;  // true
+console.log(typeof isActive); // Output: boolean
 
-// Array object
-const cars = ["Saab", "Volvo", "BMW"];
+// UNDEFINED type - variable declared but not assigned
+let notAssigned;
+console.log(notAssigned);  // Output: undefined
+console.log(typeof notAssigned); // Output: undefined
 
-// Date object
-const date = new Date("2022-03-25");
+// NULL type - intentional absence of value
+let emptyValue = null;
+console.log(emptyValue); // Output: null
+console.log(typeof emptyValue); // Output: object (quirk of JavaScript!)
 
-// Undefined
-let x;
-let y;
+// SYMBOL type - unique identifier
+const symbol1 = Symbol();
+const symbol2 = Symbol();
+console.log(typeof symbol1); // Output: symbol
+console.log(symbol1 === symbol2); // Output: false (each Symbol is unique)
 
-// Null
-let x = null;
-let y = null;
+// OBJECT type - collections (arrays, objects, etc.)
+let person = { name: "John", age: 30 };
+let numbers = [1, 2, 3, 4, 5];
+let today = new Date();
+let pattern = /hello/i;  // Regular expression
+console.log(typeof person);   // Output: object
+console.log(typeof numbers);  // Output: object (arrays are objects!)
+console.log(typeof today);    // Output: object
 
-// Symbol
-const x = Symbol();
-const y = Symbol();
+// typeof operator examples
+console.log(typeof 42);              // Output: number
+console.log(typeof "hello");         // Output: string
+console.log(typeof true);            // Output: boolean
+console.log(typeof undefined);       // Output: undefined
+console.log(typeof Symbol());        // Output: symbol
+console.log(typeof {});              // Output: object
+console.log(typeof []);              // Output: object
+console.log(typeof function(){});    // Output: function
 
-* The typeof Operator :
-- You can use the JavaScript typeof operator to find the type of a JavaScript variable.
-- The typeof operator returns the type of a variable or an expression:
+// Type coercion examples (JavaScript converts types)
+console.log("5" + 3);        // Output: "53" (string concatenation)
+console.log("5" - 3);        // Output: 2 (numeric conversion)
+console.log("5" * "2");      // Output: 10 (numeric conversion)
+console.log(true + 1);       // Output: 2 (true becomes 1)
+console.log(false + 1);      // Output: 1 (false becomes 0)
 
-- Example :
-typeof ""             // Returns "string"
-typeof "John"         // Returns "string"
-typeof "John Doe"     // Returns "string"
-Example
-typeof 0              // Returns "number"
-typeof 314            // Returns "number"
-typeof 3.14           // Returns "number"
-typeof (3)            // Returns "number"
-typeof (3 + 4)        // Returns "number"
+// Checking multiple types
+function checkType(value) {
+  if (typeof value === "string") console.log("It's text");
+  else if (typeof value === "number") console.log("It's a number");
+  else if (typeof value === "boolean") console.log("It's true/false");
+  else if (value === null) console.log("It's null");
+  else if (typeof value === "object") console.log("It's an object/array");
+}
 
-* JavaScript Strings :
-- A string (a text string) is a series of characters like "John Doe".
-- Strings are written with quotes. You can use single or double quotes:
-
-- Example :
-// Using double quotes:
-let carName1 = "Volvo XC60";
-
-// Using single quotes:
-let carName2 = 'Volvo XC60';
-You can use quotes inside a string, as long as they don't match the quotes surrounding the string:
-
-- Example :
-// Single quote inside double quotes:
-let answer1 = "It's alright";
-
-// Single quotes inside double quotes:
-let answer2 = "He is called 'Johnny'";
-
-// Double quotes inside single quotes:
-let answer3 = 'He is called "Johnny"';
-Note
-You will learn a lot more about JavaScript Strings later in this tutorial.
-
-* JavaScript Numbers :
-- All JavaScript numbers are stored as decimal numbers (floating point).
-- Numbers can be written with, or without decimals:
-- Example
-// With decimals:
-let x1 = 34.00;
-// Without decimals:
-let x2 = 34;
-
-* Exponential Notation :
-- Extra large or extra small numbers can be written with scientific (exponential) notation:
-- Example :
-let y = 123e5;    // 12300000
-let z = 123e-5;   // 0.00123
-
-* JavaScript Booleans :
-- JavaScript booleans can only have one of two values: true or false
-- The boolean value of an expression is the basis for JavaScript comparisons:
-
-Description	                 Expression	        Returns
-Not equal to	             (x == 8)	        false
-Unequal to	                 (x != 8)	        true
-Greater than	             (x > 8)	        false
-Less than	                 (x < 8)	        true
-
-* Datatype undefined :
-- In computer programs, variables are often declared without a value. The value can be something that has to be calculated, or something that will be provided later, like user input.
-- A variable without a value has the datatype undefined.
-- A variable without a value also has the value undefined.
-- Example :
-let carName;
-
-* Empty Values :
-- An empty value has nothing to do with undefined.
-- An empty string has both a legal value and a type.
-- Example
-let car = "";    // The value is "", the typeof is "string"
-*/
+checkType("hello");    // Output: It's text
+checkType(42);         // Output: It's a number
+checkType(true);       // Output: It's true/false
+checkType(null);       // Output: It's null
+checkType({ x: 1 });   // Output: It's an object/array

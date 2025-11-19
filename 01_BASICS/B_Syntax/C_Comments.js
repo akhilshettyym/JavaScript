@@ -1,56 +1,68 @@
-/*
-* JavaScript Comments :
-- JavaScript comments can be used to explain JavaScript code, and to make it more readable.
--JavaScript comments can also be used to prevent execution, when testing alternative code.
+// ============================================
+// JAVASCRIPT COMMENTS
+// ============================================
 
-* Single Line Comments :
-- Single line comments start with //.
+// THEORY: Comments are ignored by JavaScript engine
+// - Used to explain code and make it more readable
+// - Helpful for future reference and team collaboration
+// - Can be used to temporarily disable code (comment out)
 
-- Any text between // and the end of the line will be ignored by JavaScript (will not be executed).
-- This example uses a single-line comment before each code line:
+// THEORY: Two types of comments:
+// 1. Single-line comments: // (everything after // on that line is ignored)
+// 2. Multi-line comments: /* */ (everything between /* and */ is ignored)
 
-Example :
-// Change heading:
-document.getElementById("myH").innerHTML = "My First Page";
+// THEORY: Best practices:
+// - Explain WHY, not WHAT (code should be self-explanatory)
+// - Keep comments concise and accurate
+// - Update comments when code changes
+// - Don't over-comment obvious code
 
-// Change paragraph:
-document.getElementById("myP").innerHTML = "My first paragraph.";
-This example uses a single line comment at the end of each line to explain the code:
+// ============================================
+// WORKING EXAMPLES
+// ============================================
 
-Example
-let x = 5;      // Declare x, give it the value of 5
-let y = x + 2;  // Declare y, give it the value of x + 2
-Multi-line Comments
-Multi-line comments start with /* and end with */
+// Single-line comment example
+let firstName = "John";  // Store first name
+let lastName = "Doe";    // Store last name
 
-// Any text between /* and */ will be ignored by JavaScript.
-// This example uses a multi-line comment (a comment block) to explain the code:
-// Example :
-/*
-The code below will change
-the heading with id = "myH"
-and the paragraph with id = "myP"
-in my web page:
+// Multiple single-line comments explaining logic
+// Calculate total price after tax
+let subtotal = 100;
+let taxRate = 0.08;      // 8% tax
+let totalPrice = subtotal * (1 + taxRate);
+console.log("Total: $" + totalPrice); // Output: Total: $108
+
+/* 
+  Multi-line comment block:
+  This demonstrates how to write longer explanations
+  spanning multiple lines when needed
 */
-// document.getElementById("myH").innerHTML = "My First Page";
-// document.getElementById("myP").innerHTML = "My first paragraph.";
-// It is most common to use single line comments.
-// Block comments are often used for formal documentation.
+
+// Commenting out code for testing
+let result = 10 + 5;
+console.log(result);  // Output: 15
+
+// let disabledCode = 20 + 15;  // This code is disabled (commented out)
 
 /*
-* Using Comments to Prevent Execution
-Using comments to prevent execution of code is suitable for code testing.
-
-Adding // in front of a code line changes the code lines from an executable line to a comment.
-This example uses // to prevent execution of one of the code lines:
-
-Example :
-//document.getElementById("myH").innerHTML = "My First Page";
-document.getElementById("myP").innerHTML = "My first paragraph.";
-This example uses a comment block to prevent execution of multiple lines:
-
-Example :
-/*
-document.getElementById("myH").innerHTML = "My First Page";
-document.getElementById("myP").innerHTML = "My first paragraph.";
+  Block comment to disable multiple lines:
+  let x = 100;
+  let y = 200;
+  console.log(x + y);
 */
+
+// Real-world example: Function with explanatory comments
+function calculateDiscount(price, discountPercent) {
+  // Convert percentage to decimal
+  let discountAmount = price * (discountPercent / 100);
+  
+  // Calculate final price after discount
+  let finalPrice = price - discountAmount;
+  
+  return finalPrice;  // Return discounted price
+}
+
+console.log(calculateDiscount(100, 20)); // Output: 80
+
+// TODO comment - common convention for marking future work
+// TODO: Add error handling for negative prices

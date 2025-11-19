@@ -1,5 +1,6 @@
 /*
 JavaScript String Reference
+
 Complete String Reference
 Revised July 2025
 Name	Description

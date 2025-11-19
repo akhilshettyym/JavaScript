@@ -1,138 +1,205 @@
-/*
-JavaScript Switch Statement
+// ============================================
+// SWITCH STATEMENT
+// ============================================
 
-* Switch Control Flow :
-- Based on a condition, switch selects one or more code blocks to be executed.
-- switch executes the code blocks that matches an expression.
-- switch is often used as a more readable alternative to many if...else if...else statements, especially when dealing with multiple possible values.
-- Syntax :
-switch(expression) {
-  case x:
-    // code block
-    break;
-  case y:
-    // code block
-    break;
-  default:
-    // code block
-}
+// THEORY: Switch executes different blocks based on different conditions
+// - More readable than multiple if...else if statements
+// - Evaluates expression once, compares against multiple cases
+// - Uses strict comparison (===) for case matching
+// - break keyword exits switch, avoiding fallthrough
 
-This is how it works:
-- The switch expression is evaluated once.
-- The value of the expression is compared with the values of each case.
-- If there is a match, the associated block of code is executed.
-- If there is no match, no code is executed.
+// THEORY: Syntax:
+// switch(expression) {
+//   case value1: code; break;
+//   case value2: code; break;
+//   default: code;
+// }
 
-- Example :
-- This example uses the weekday number to calculate the weekday name:
-switch (new Date().getDay()) {
-  case 0:
-    day = "Sunday";
-    break;
+// THEORY: Key points:
+// - break is crucial (prevents fallthrough to next case)
+// - default is optional (executes if no match)
+// - switch uses strict equality (===)
+// - Multiple cases can share same code block
+
+// ============================================
+// WORKING EXAMPLES
+// ============================================
+
+console.log("=== BASIC SWITCH ===");
+
+let day = 3;
+
+switch (day) {
   case 1:
-    day = "Monday";
+    console.log("Monday");
     break;
   case 2:
-     day = "Tuesday";
+    console.log("Tuesday");
     break;
   case 3:
-    day = "Wednesday";
+    console.log("Wednesday"); // Output: Wednesday
     break;
   case 4:
-    day = "Thursday";
+    console.log("Thursday");
     break;
   case 5:
-    day = "Friday";
-    break;
-  case 6:
-    day = "Saturday";
-}
-
-- Note : The getDay() method returns the weekday as a number between 0 and 6.
-(Sunday=0, Monday=1, Tuesday=2 ..)
-
-* The break Keyword :
-- When JavaScript reaches a break keyword, it breaks out of the switch block.
-- This will stop the execution inside the switch block.
-- No more statements in the switch block will be executed.
-- It is not necessary to break the last case. The switch ends (breaks) there anyway.
-
-- Note : The break keyword is crucial for preventing a "fall-through."
-- Without break, the code will continue to execute the next case blocks (and the default block if present) even if their values do not match the expression.
-
-* The default Keyword :
-- The default keyword specifies a block of code to run if there is no case match.
-- The default keyword is optional.
-- The default can act as a fallback:
-- Example :
-- The getDay() method returns the weekday as a number between 0 and 6.
-- If today is neither Saturday (6) nor Sunday (0), write a default message:
-switch (new Date().getDay()) {
-  case 6:
-    text = "Today is Saturday";
-    break;
-  case 0:
-    text = "Today is Sunday";
+    console.log("Friday");
     break;
   default:
-    text = "Looking forward to the Weekend";
+    console.log("Weekend");
 }
 
-The result of text will be:
-Looking forward to the Weekend.
+console.log("\n=== SWITCH WITH DEFAULT ===");
 
-- The default case does not have to be the last case in a switch block:
-- Example :
-switch (new Date().getDay()) {
-  default:
-    text = "Looking forward to the Weekend";
-    break;
-  case 6:
-    text = "Today is Saturday";
-    break;
-  case 0:
-    text = "Today is Sunday";
-}
-- If default is not the last case in the switch block, remember to end the default case with a break.
+let fruit = "apple";
 
-* Common Code Blocks :
-- Sometimes you will want different switch cases to use the same code.
-- In this example case 4 and 5 share the same code block, and 0 and 6 share another code block:
-- Example
-switch (new Date().getDay()) {
-  case 4:
-  case 5:
-    text = "Soon it is Weekend";
+switch (fruit) {
+  case "banana":
+    console.log("Yellow fruit");
     break;
-  case 0:
-  case 6:
-    text = "It is Weekend";
+  case "orange":
+    console.log("Orange fruit");
     break;
   default:
-    text = "Looking forward to the Weekend";
+    console.log("Unknown fruit"); // Output: Unknown fruit
 }
 
-* Switching Details :
-- If multiple cases matches a case value, the first case is selected.
-- If no matching cases are found, the program continues to the default label.
-- If no default label is found, the program continues to the statement(s) after the switch.
+console.log("\n=== SWITCH FALLTHROUGH (WITHOUT BREAK) ===");
 
-* Strict Comparison :
-- Switch uses strict comparison (===).
-- The values must be of the same type to match.
-- A strict comparison can only be true if both operands are of the same type.
-- Example :
-In this example there is no match for x:
-let x = "0";
-switch (x) {
-  case 0:
-    text = "Off";
+let grade = "B";
+
+switch (grade) {
+  case "A":
+  case "B":
+    console.log("Good job!"); // Output: Good job! (both A and B)
     break;
+  case "C":
+    console.log("Average");
+    break;
+  case "F":
+    console.log("Failed");
+    break;
+  default:
+    console.log("Invalid grade");
+}
+
+console.log("\n=== SHARING CODE BLOCKS ===");
+
+let month = 12;
+
+switch (month) {
+  case 12:
   case 1:
-    text = "On";
+  case 2:
+    console.log("Winter"); // Output: Winter
+    break;
+  case 3:
+  case 4:
+  case 5:
+    console.log("Spring");
+    break;
+  case 6:
+  case 7:
+  case 8:
+    console.log("Summer");
+    break;
+  case 9:
+  case 10:
+  case 11:
+    console.log("Autumn");
     break;
   default:
-    text = "No value found";
+    console.log("Invalid month");
 }
-    
- */
+
+console.log("\n=== SWITCH WITH STRINGS ===");
+
+let color = "red";
+
+switch (color) {
+  case "red":
+    console.log("Stop"); // Output: Stop
+    break;
+  case "yellow":
+    console.log("Wait");
+    break;
+  case "green":
+    console.log("Go");
+    break;
+  default:
+    console.log("Unknown color");
+}
+
+console.log("\n=== SWITCH STRICT COMPARISON ===");
+
+let value = "5";
+
+switch (value) {
+  case 5:
+    console.log("Number 5");
+    break;
+  case "5":
+    console.log("String '5'"); // Output: String '5' (uses strict ===)
+    break;
+  default:
+    console.log("Something else");
+}
+
+console.log("\n=== SWITCH WITH EXPRESSIONS ===");
+
+let score = 85;
+
+switch (true) {
+  case score >= 90:
+    console.log("Grade: A");
+    break;
+  case score >= 80:
+    console.log("Grade: B"); // Output: Grade: B
+    break;
+  case score >= 70:
+    console.log("Grade: C");
+    break;
+  default:
+    console.log("Grade: F");
+}
+
+console.log("\n=== REAL-WORLD: ANIMAL SOUNDS ===");
+
+let animal = "dog";
+
+switch (animal) {
+  case "dog":
+    console.log("Woof!"); // Output: Woof!
+    break;
+  case "cat":
+    console.log("Meow!");
+    break;
+  case "cow":
+    console.log("Moo!");
+    break;
+  case "duck":
+    console.log("Quack!");
+    break;
+  default:
+    console.log("Unknown sound");
+}
+
+console.log("\n=== REAL-WORLD: HTTP STATUS ===");
+
+let statusCode = 200;
+
+switch (statusCode) {
+  case 200:
+  case 201:
+    console.log("Success"); // Output: Success
+    break;
+  case 400:
+  case 404:
+    console.log("Client error");
+    break;
+  case 500:
+    console.log("Server error");
+    break;
+  default:
+    console.log("Unknown status");
+}
