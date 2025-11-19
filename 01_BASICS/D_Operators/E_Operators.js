@@ -30,7 +30,4 @@ a instanceof Array // true
 
 let b = {};
 b instanceof object // true
-
-
-
 */
