@@ -79,9 +79,6 @@ Use the same trick to sort an array descending:
 Example
 const points = [40, 100, 1, 5, 25, 10];
 points.sort(function(a, b){return b - a});
-ADVERTISEMENT
-
-REMOVE ADS
 
 The Compare Function
 The purpose of the compare function is to define an alternative sort order.

@@ -107,10 +107,6 @@ Chrome
 61	Safari
 12	Opera
 50
-Apr 2018	Jan 2020	Jun 2018	Sep 2018	May 2018
-ADVERTISEMENT
-
-REMOVE ADS
 
 JavaScript Array filter()
 The filter() method creates a new array with array elements that pass a test.

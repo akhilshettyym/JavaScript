@@ -59,6 +59,26 @@ let ans = test.reduce(function(accumulator, val) {
     return accumulator + val;
 }, 0);
 
+// Find
 test.find(function(val){
     return val === 1;
 })
+
+// Some
+let ar = [10, 30, 35, 90];
+let any = ar.some(function(val) {
+    return val > 85;
+})
+
+// Every
+let eve = ar.every(function(val) {
+    return val > 5;
+})
+
+// Destructuring and Spread Operator
+// - Destructuring :
+let arra = [1, 2, 3, 4, 5]
+let [a, b, , c] = arr;          // Skips 3 if , , this is done. 
+
+// - Spread Operator :
+let arr2 = [...arr];

@@ -78,10 +78,6 @@ var cars = ["Saab", "Volvo", "BMW"];
 // Here cars[0] is "Toyota"
 You can learn more about Block Scope in the chapter: JavaScript Scope.
 
-ADVERTISEMENT
-
-REMOVE ADS
-
 Redeclaring Arrays
 Redeclaring an array declared with var is allowed anywhere in a program:
 
