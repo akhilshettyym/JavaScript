@@ -21,7 +21,7 @@
 
 // THEORY: Lower Camel Case Naming Convention:
 // - JavaScript prefers camelCase: firstName, lastName, myVariable
-// - Avoid hyphens (reserved for subtraction): ❌ first-name
+// - Avoid hyphens (reserved for subtraction):  first-name
 // - Underscores work but uncommon: first_name
 
 // THEORY: Expressions combine values, variables, and operators
