@@ -53,7 +53,7 @@ paragraph.innerHTML = "<b>Updated</b> by javaScript"
 // T4 : How do you get the src of an image using javaScript ?
 let img = document.querySelector("img");
 console.log("getAttribute : ", img.getAttribute("src"));
-
+ 
 // T5 : How to change set the src
 img.setAttribute("src", "https://www.github.com")
 console.log("setAttribute : ", img.getAttribute("src"));
@@ -61,3 +61,30 @@ console.log("setAttribute : ", img.getAttribute("src"));
 // T6 : Change the href
 let a = document.querySelector("a");
 a.href = "https://www.github.com";
+
+let title = document.querySelector("div");
+title.setAttribute("title", "Hola");
+
+let btn = document.querySelector("button");
+btn.removeAttribute("disabled");
+
+/*
+08. What does createElement() do? What's returned ?
+- createElement() is used to dynamically create an HTML element in the DOM.
+- The document.createElement() method returns a reference to the newly created HTML element as an HTMLElement instance.
+- This returned element is a standalone object in memory and is not yet part of the document's visual structure until 
+it is appended to an existing element in the DOM using methods like appendChild() or insertBefore().
+*/
+
+// T7 : Add a highlight class to every even item in a list.
+let liChild = document.querySelectorAll("ul li:nth-child(2n)");
+liChild.forEach(function(val) {
+    val.classList.add("highlight");
+})
+
+
+// T8 : Set the font size of all <p> elements to 18px using .style
+let p = document.querySelectorAll("p");
+p.forEach((val) => {
+    val.style.fontSize = "18px";
+})
