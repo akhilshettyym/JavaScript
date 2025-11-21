@@ -35,5 +35,11 @@ form.addEventListener('submit', (dets) => {
 
     main.appendChild(card);
 
+    inputs.forEach((inp) => {
+        if(inp.type !== "submit") {
+            inp.value = "";
+        }
+    })
+
     console.log(card);
 })
