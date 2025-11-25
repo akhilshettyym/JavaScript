@@ -19,20 +19,23 @@ button  - if button has no events, moves upwards insearch of an event
 * Event capturing :
 Event travles from the root of the document tree down to the target element that initiated the event.
 
+* Phases of Event Propagation: Event propagation has three phases:
+- Capturing Phase: The event travels downwards from the root to the target. 
+- Target Phase: The event reaches the target element itself.
+- Bubbling Phase: The event travels upwards from the target back to the root. 
 */
-
 
 let abcd = document.querySelector("#abcd");
 
-abcd.addEventListener("mouseover", function(){
-    abcd.style.backgroundColor= "green";
+abcd.addEventListener("mouseover", function () {
+    abcd.style.backgroundColor = "green";
 })
 
-abcd.addEventListener("mouseout", function(){
-    abcd.style.backgroundColor= "antiquewhite";
+abcd.addEventListener("mouseout", function () {
+    abcd.style.backgroundColor = "antiquewhite";
 })
 
-window.addEventListener("mousemove", function(dets) {
+window.addEventListener("mousemove", function (dets) {
     // console.log(dets.clientX, dets.clientY);
     abcd.style.top = dets.clientY + "px";
     abcd.style.left = dets.clientX + "px";
