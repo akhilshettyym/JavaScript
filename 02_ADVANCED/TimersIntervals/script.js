@@ -26,11 +26,11 @@ console.log(fileIcon.innerText)
 
 setTimeout(() => {
     setInterval(() => {
-        if(count <= 99) {
+        if (count <= 99) {
             count++;
             progress.style.width = `${count}%`
             progressNum.innerText = `${count}%`
-            if(count == 100){
+            if (count == 100) {
                 fileIcon.innerText = "Downloaded"
                 status.innerText = "Successfully Downloaded"
             }
@@ -39,12 +39,12 @@ setTimeout(() => {
 }, 5000)
 
 setInterval(() => {
-    if(counter < 5){
+    if (counter < 5) {
         counter++;
         console.log(counter)
         fileIcon.innerText = `Download starts in ${counter}`
     }
-    if(counter == 4.99) {
+    if (counter == 4.99) {
         fileIcon.innerText = "Downloading..."
         status.innerText = "Processing with status code 200 OK"
     }
