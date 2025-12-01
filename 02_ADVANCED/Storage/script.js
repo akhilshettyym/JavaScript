@@ -33,5 +33,7 @@ Used for less data or light data only.
 // document.cookie = "akhil@gmail.com"
 
 
+// When we store data in local storage we store it as string.
+// But while we use it we have to parse it and get it to its natural form.
 localStorage.setItem("friends", JSON.stringify(["Akash", "Shashank", "Akhil"]));
 let test = JSON.parse(localStorage.getItem("friends"))
