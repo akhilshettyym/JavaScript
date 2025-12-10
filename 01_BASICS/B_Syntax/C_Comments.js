@@ -55,10 +55,10 @@ console.log(result);  // Output: 15
 function calculateDiscount(price, discountPercent) {
   // Convert percentage to decimal
   let discountAmount = price * (discountPercent / 100);
-  
+
   // Calculate final price after discount
   let finalPrice = price - discountAmount;
-  
+
   return finalPrice;  // Return discounted price
 }
 
