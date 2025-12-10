@@ -83,7 +83,7 @@ console.log(typeof undefined);       // Output: undefined
 console.log(typeof Symbol());        // Output: symbol
 console.log(typeof {});              // Output: object
 console.log(typeof []);              // Output: object
-console.log(typeof function(){});    // Output: function
+console.log(typeof function () { });    // Output: function
 
 // Type coercion examples (JavaScript converts types)
 console.log("5" + 3);        // Output: "53" (string concatenation)
