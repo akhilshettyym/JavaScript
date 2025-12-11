@@ -65,7 +65,7 @@ console.log(!!true);           // true
 console.log(!!1);              // true
 console.log(!!(-5));           // true
 console.log(!![1, 2, 3]);      // true (array)
-console.log(!!{name: "John"}); // true (object)
+console.log(!!{ name: "John" }); // true (object)
 
 console.log("\n=== FALSY VALUES ===");
 
