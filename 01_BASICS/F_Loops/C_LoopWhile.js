@@ -124,7 +124,7 @@ function showMenu() {
 
   do {
     choice = 2;  // Simulating user choice
-    
+
     switch (choice) {
       case 1:
         console.log("You selected: Create");
