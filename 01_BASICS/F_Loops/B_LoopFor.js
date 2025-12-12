@@ -71,7 +71,7 @@ for (; start < 3; start++) {
 }
 
 // Can skip expression 3 (update inside)
-for (let i = 0; i < 3; ) {
+for (let i = 0; i < 3;) {
   console.log("Skipped update:", i);
   i++;
 }
