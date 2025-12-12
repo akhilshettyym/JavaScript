@@ -60,13 +60,13 @@ console.log("\n=== GUARD CLAUSES (FAIL FAST) ===");
 function processUser(user) {
   // Guard clause 1: Check if user exists
   if (!user) return "No user provided";
-  
+
   // Guard clause 2: Check if user has email
   if (!user.email) return "Email required";
-  
+
   // Guard clause 3: Check if user is active
   if (!user.isActive) return "User is not active";
-  
+
   // Main logic (all guards passed)
   return "Processing user: " + user.email;
 }
@@ -132,13 +132,13 @@ console.log("\n=== REAL-WORLD: API RESPONSE HANDLING ===");
 function handleResponse(response) {
   // Guard: Check if response exists
   if (!response) return "No response";
-  
+
   // Guard: Check if response has data
   if (!response.data) return "No data in response";
-  
+
   // Guard: Check status code
   if (response.status !== 200) return "Error: Status " + response.status;
-  
+
   // Success: Process data
   return "Data received: " + response.data.length + " items";
 }
@@ -157,7 +157,7 @@ function validateForm(formData) {
   if (!formData.password) return "Password is required";
   if (formData.password.length < 6) return "Password must be at least 6 characters";
   if (!formData.agreeTerms) return "Must agree to terms";
-  
+
   // All validation passed
   return "Form is valid";
 }
