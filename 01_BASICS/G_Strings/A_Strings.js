@@ -147,8 +147,8 @@ console.log(poem);
 
 // String concatenation approach (old way)
 let multiLine = "Line 1\n" +
-                "Line 2\n" +
-                "Line 3";
+  "Line 2\n" +
+  "Line 3";
 console.log(multiLine);
 
 // ============= STRING COERCION =============
