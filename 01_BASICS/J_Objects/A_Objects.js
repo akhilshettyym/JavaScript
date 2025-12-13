@@ -41,9 +41,9 @@ console.log(person[key]);               // 30
 // OBJECT WITH METHODS
 const calculator = {
   value: 0,
-  add: function(n) { this.value += n; return this.value; },
-  subtract: function(n) { this.value -= n; return this.value; },
-  getValue: function() { return this.value; }
+  add: function (n) { this.value += n; return this.value; },
+  subtract: function (n) { this.value -= n; return this.value; },
+  getValue: function () { return this.value; }
 };
 
 console.log(calculator.add(5));           // 5
@@ -69,7 +69,7 @@ function Person(first, last, age) {
   this.firstName = first;
   this.lastName = last;
   this.age = age;
-  this.fullName = function() { return this.firstName + " " + this.lastName; };
+  this.fullName = function () { return this.firstName + " " + this.lastName; };
 }
 
 const john = new Person("John", "Smith", 45);
