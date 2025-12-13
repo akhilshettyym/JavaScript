@@ -12,7 +12,7 @@ function mul(a, b){
 //03. Use REST parameter to accept any number of scores and return the total
 function tot(...scores) {
     let total = 0;
-    scores.forEach(function(val){
+    scores.forEach(function (val) {
         total = total + val;
     })
     return total;
@@ -21,33 +21,33 @@ function tot(...scores) {
 
 //04. Fix with early return
 function checkAge(age) {
-    if(age < 18) return "Too young";
+    if (age < 18) return "Too young";
     else return "Allowed";
 }
 // console.log(checkAge(10));
 
 //05. Use of IIFE.
-let test = (function() {
+let test = (function () {
     let score = 0;
     return {
-        getScore: function() {
+        getScore: function () {
             console.log(score);
         },
-        setScore: function() {
+        setScore: function () {
             score = val;
         },
     }
-}) ();
+})();
 
 //01. Write a BMI calculator
-function bmi(weight, height){
-    return weight / (height*height);
+function bmi(weight, height) {
+    return weight / (height * height);
 }
 console.log(Math(bmi(60, 1.8).toFixed(2)));
 
 //02. Reusable discount calculator (HOF)
 function discountCalculator(discount) {
-    return function(price) {
+    return function (price) {
         return price - price * (discount / 100);
     }
 }
@@ -60,7 +60,7 @@ console.log(twenty(1000));
 // Closures
 function counter() {
     let count = 0;
-    return function() {
+    return function () {
         count++;
         return count;
     };
