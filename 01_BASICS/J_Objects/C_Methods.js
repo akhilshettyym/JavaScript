@@ -4,7 +4,7 @@
 const person = {
   firstName: "John",
   lastName: "Doe",
-  fullName: function() {
+  fullName: function () {
     return this.firstName + " " + this.lastName;
   }
 };
@@ -14,11 +14,11 @@ console.log(person.fullName());        // "John Doe"
 // METHOD WITH PARAMETERS
 const calculator = {
   value: 0,
-  add: function(n) {
+  add: function (n) {
     this.value += n;
     return this.value;
   },
-  multiply: function(n) {
+  multiply: function (n) {
     this.value *= n;
     return this.value;
   }
@@ -38,7 +38,7 @@ const obj = {
 const user = {
   name: "Alice",
   age: 25,
-  greet: function() {
+  greet: function () {
     return `Hello, I'm ${this.name} and I'm ${this.age}`;
   }
 };
@@ -48,15 +48,15 @@ console.log(user.greet());             // "Hello, I'm Alice and I'm 25"
 // METHOD CHAINING
 const account = {
   balance: 1000,
-  deposit: function(amount) {
+  deposit: function (amount) {
     this.balance += amount;
     return this;  // Return 'this' for chaining
   },
-  withdraw: function(amount) {
+  withdraw: function (amount) {
     this.balance -= amount;
     return this;
   },
-  getBalance: function() {
+  getBalance: function () {
     return this.balance;
   }
 };
@@ -69,7 +69,7 @@ const student = {
   score: 85
 };
 
-student.getGrade = function() {
+student.getGrade = function () {
   if (this.score >= 90) return "A";
   if (this.score >= 80) return "B";
   if (this.score >= 70) return "C";
@@ -90,8 +90,8 @@ console.log(arr.join("-"));            // "1-2-3"
 function Product(name, price) {
   this.name = name;
   this.price = price;
-  
-  this.getDiscounted = function(discount) {
+
+  this.getDiscounted = function (discount) {
     return this.price * (1 - discount / 100);
   };
 }
