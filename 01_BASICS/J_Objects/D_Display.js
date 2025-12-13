@@ -92,7 +92,7 @@ city: New York
 const customObj = {
   x: 10,
   y: 20,
-  toString: function() {
+  toString: function () {
     return `Point(${this.x}, ${this.y})`;
   }
 };
