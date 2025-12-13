@@ -21,7 +21,7 @@ const user = {
     },
 };
 
-let {lat, lng} = user.address.location;
+let { lat, lng } = user.address.location;
 // console.log(user.address.location.lng);
 
 // -------------------------------------------------------------
@@ -31,7 +31,7 @@ let obj1 = {
     email: "akhil@gmail.com"
 };
 
-for(let key in obj1) {
+for (let key in obj1) {
     // console.log(key);
     // console.log(key, obj1[key]);
 }
@@ -40,7 +40,7 @@ for(let key in obj1) {
 // -------------------------------------------------------------
 // console.log(Object.entries(obj1));   // Arrays of arrays
 // -------------------------------------------------------------
-let obj2 = {...obj1};
+let obj2 = { ...obj1 };
 // console.log(obj2);
 // -------------------------------------------------------------
 let obj3 = Object.assign({}, obj);
@@ -85,6 +85,6 @@ const cource = {
     duration: "4 weeks",
 };
 
-Object.entries(cource).forEach(function(val){
+Object.entries(cource).forEach(function (val) {
     console.log(val[0] + " : " + val[1]);
 });
