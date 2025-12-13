@@ -15,7 +15,7 @@ function dance() {
 // dance();
 
 // Function Expression
-let func = function(){
+let func = function () {
     console.log("Am a function Expression");
     console.log("Am a function Expression");
     console.log("Am a function Expression");
@@ -48,7 +48,7 @@ naach("Ghoda");
 // When v1 + v2 is done ie undefined + undefined = NaN
 // Here in parameters we can have a default values or parameters so that even if the function won't get 
 // any arguements the default values will be considered.
-function add(v1 = 0, v2 = 0){
+function add(v1 = 0, v2 = 0) {
     console.log(v1, v2);
 }
 add();
@@ -66,7 +66,7 @@ abcd(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
 // RETURN VALUES and EARLY RETURNS :
 // - Return is always done inside a function.
-function bcd () {
+function bcd() {
     return 123;
 }
 let val = bcd();
@@ -74,10 +74,10 @@ console.log(val);
 
 // FIRST-CLASS FUNCTIONS(assign to variables, pass as arguements, return from other functions)
 // - First-class functions :  functions can be treated as value
-function xyz(val){
+function xyz(val) {
     val();
 }
-xyz(function() {
+xyz(function () {
     console.log("Hola");
 });
 
@@ -85,15 +85,15 @@ xyz(function() {
 // - Accept one or more functions as arguments (callback functions).
 // - Return a function as their result.
 // HOF is a function which returns a function or accepts a function
-function abcde(){
+function abcde() {
 
 }
-abcde(function(){
+abcde(function () {
 
 })
 // OR
-function abcde(){
-    return function(){
+function abcde() {
+    return function () {
 
     }
 }
@@ -110,7 +110,7 @@ abcde()(); // second bracket is to run the second function inside
 // Closures - A function which returns  another function, and the function which is returned will always use variable of parent function.
 function funct() {
     let a = 12;
-    return function(){
+    return function () {
         console.log(a);
     }
 }
@@ -118,11 +118,11 @@ function funct() {
 // Lexical scoping also known as static scoping - 
 // dictates how variables and functions are accessible based on their PHYSICAL LOCATION within the 
 // source code at the time of definition, not at the time of execution.
-function lex(){
+function lex() {
     let a = 10;
-    function cal(){
+    function cal() {
         let b = 20;
-        function lexi(){
+        function lexi() {
             let c = 30;
         }
     }
@@ -132,13 +132,13 @@ function lex(){
 // IIFE(Immediately Invoked Function Expression) : Iffy
 // - function that is defined and executed immediately after its creation.
 // This pattern is primarily used to create a private scope for variables, preventing them from polluting the global scope and avoiding naming conflicts.
-(function(){
-    
+(function () {
+
 })();
 
 
 // Hoisting differences between declaration and expression.
 test();
-function test(){
+function test() {
     console.log("HEHEHEHE")
 }
