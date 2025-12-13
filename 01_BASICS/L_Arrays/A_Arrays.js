@@ -45,7 +45,7 @@ for (let i = 0; i < fruits.length; i++) {
 }
 
 console.log("Using forEach:");
-fruits.forEach(function(fruit) {
+fruits.forEach(function (fruit) {
   console.log(fruit);
 });
 
@@ -68,7 +68,7 @@ const misc = [
   null,
   undefined,
   { name: "John" },
-  function() { return "function"; }
+  function () { return "function"; }
 ];
 
 console.log(misc[5].name);             // "John"
