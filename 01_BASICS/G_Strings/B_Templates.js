@@ -41,9 +41,9 @@ console.log(poem);
 
 // Without template literals (messy)
 let oldPoem = "Roses are red,\n" +
-              "Violets are blue,\n" +
-              "Old way of strings,\n" +
-              "Is not so nice.";
+  "Violets are blue,\n" +
+  "Old way of strings,\n" +
+  "Is not so nice.";
 console.log(oldPoem);
 
 // ============= EXPRESSIONS IN TEMPLATES =============
