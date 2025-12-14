@@ -33,7 +33,7 @@ names.sort().reverse();     // Can also be written like this.
 
 //07. Use map to square each number
 let arr = [1, 2, 3, 4];
-let newArr = arr.map(function(val) {
+let newArr = arr.map(function (val) {
     return val * val;
 })
 // console.log(newArr);
@@ -41,7 +41,7 @@ let newArr = arr.map(function(val) {
 //08. Use filter to keep numbers greater than 10
 let great = [5, 12, 8, 20, 4];
 let newGrt = great.filter((val) => {
-    return  val > 10;
+    return val > 10;
 })
 // console.log(newGrt);
 
@@ -69,7 +69,7 @@ let newStud = stud.some((val) => {
 //12. Use every to check if all numbers are even.
 let num = [2, 4, 6, 8, 10];
 let newNum = num.every((val) => {
-    return val%2 == 0;
+    return val % 2 == 0;
 })
 // console.log(newNum);
 
