@@ -235,11 +235,11 @@ function memoize(fn) {
 
 // Closures -
 function counter() {
-    let c = 0;
-    return function () {
-        c++;
-        console.log(c);
-    }
+  let c = 0;
+  return function () {
+    c++;
+    console.log(c);
+  }
 }
 let fun = counter();
 fun();
@@ -256,15 +256,15 @@ fun2();
 
 // Encapsulation
 function clickLimiter() {
-    let click = 0;
-    return function() {
-        if(click < 5){
-            click++;
-            console.log(`clicked : ${click} times`);
-        } else {
-            console.error(`Limit exceeded`);
-        }
+  let click = 0;
+  return function () {
+    if (click < 5) {
+      click++;
+      console.log(`clicked : ${click} times`);
+    } else {
+      console.error(`Limit exceeded`);
     }
+  }
 }
 
 let limiter = clickLimiter();
