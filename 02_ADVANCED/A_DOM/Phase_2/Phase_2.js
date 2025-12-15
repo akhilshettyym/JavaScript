@@ -53,7 +53,7 @@ paragraph.innerHTML = "<b>Updated</b> by javaScript"
 // T4 : How do you get the src of an image using javaScript ?
 let img = document.querySelector("img");
 console.log("getAttribute : ", img.getAttribute("src"));
- 
+
 // T5 : How to change set the src
 img.setAttribute("src", "https://www.github.com")
 console.log("setAttribute : ", img.getAttribute("src"));
@@ -78,7 +78,7 @@ it is appended to an existing element in the DOM using methods like appendChild(
 
 // T7 : Add a highlight class to every even item in a list.
 let liChild = document.querySelectorAll("ul li:nth-child(2n)");
-liChild.forEach(function(val) {
+liChild.forEach(function (val) {
     val.classList.add("highlight");
 })
 
