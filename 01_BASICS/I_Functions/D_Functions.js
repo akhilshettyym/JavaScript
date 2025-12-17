@@ -1,7 +1,6 @@
 /*
 * What is a function :
-- A function is a block of reusable code designed to perform a specific task. It encapsulates a set of instructions that 
-can be executed on demand, rather than running immediately when the script loads. 
+- A function is a block of reusable code designed to perform a specific task. It encapsulates a set of instructions that can be executed on demand, rather than running immediately when the script loads. 
 */
 
 // Function Declaration
