@@ -9,17 +9,18 @@ const highScoreElement = document.querySelector("#high-score");
 const scoreElement = document.querySelector("#score");
 const timeElement = document.querySelector("#time");
 
+
 const blockHeight = 40;
 const blockWidth = 40;
 
-let highScore = localStorage.getItem("highScore") || 0;
-let score = 0;
-let time = `00-00`;
-
-highScoreElement.innerText = highScore;
-
 const cols = Math.floor(board.clientWidth / blockWidth);
 const rows = Math.floor(board.clientHeight / blockHeight);
+
+let highScore = localStorage.getItem("highScore") || 0;
+let score = 0;
+let time = "00-00";
+
+highScoreElement.innerText = highScore;
 
 let direction = 'down';
 let intervalId = null;
@@ -31,19 +32,12 @@ let snake = [{
 }];
 let food = { x: Math.floor(Math.random() * rows), y: Math.floor(Math.random() * cols) }
 
-
-// for(let i = 0; i < rows*cols; i++){
-//     const block = document.createElement('div');
-//     block.classList.add("block");
-//     board.appendChild(block);
-// }
-
 for (let row = 0; row < rows; row++) {
     for (let col = 0; col < cols; col++) {
         const block = document.createElement('div');
         block.classList.add("block");
         board.appendChild(block);
-        block.innerText = `${row}-${col}`
+        // block.innerText = `${row}-${col}`
         blocks[`${row}-${col}`] = block;
     }
 }
@@ -84,7 +78,7 @@ function render() {
         score += 10;
         scoreElement.innerText = score;
 
-        if(score > highScore) {
+        if (score > highScore) {
             highScore = score;
             localStorage.setItem("highScore", highScore.toString());
         }
@@ -112,14 +106,13 @@ startButton.addEventListener("click", () => {
     timeIntervalId = setInterval(() => {
         let [min, sec] = time.split("-").map(Number);
 
-        if(sec == 59) {
-            min += 1;
+        sec += 1;
+        if (sec >= 60) {
             sec = 0;
-        } else {
-            sec += 1;
+            min += 1;
         }
 
-        time = `${min}-${sec}`;
+        time = `${min.toString().padStart(2, '0')}-${sec.toString().padStart(2, '0')}`;
         timeElement.innerText = time;
     }, 1000);
 });
@@ -142,14 +135,12 @@ function restartGame() {
 
     score = 0;
     scoreElement.innerText = score;
-    
+
     time = `00-00`;
     timeElement.innerText = time;
 
     highScoreElement.innerText = highScore;
 }
-
-
 
 addEventListener("keydown", (event) => {
     // console.log("DETAILS", event)
@@ -162,4 +153,4 @@ addEventListener("keydown", (event) => {
     } else if (event.key === "ArrowDown") {
         direction = "down";
     }
-})
+});
