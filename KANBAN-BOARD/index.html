@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <main>
         <nav>
@@ -44,15 +46,17 @@
         </section>
     </main>
 
-    <div class="center">
+    <div class="modal add-new-task">
         <div class="bg"></div>
-        <div class="modal add-new-task">
-            <input type="text" placeholder="Task title" />
-            <textarea placeholder="Task Description"></textarea>
+        <div class="center">
+            <input type="text" id="task-title-input" placeholder="Task title" />
+            <textarea id="task-desc-input" placeholder="Task Description"></textarea>
             <button id="add-new-task" class="add-task-btn">Add Task</button>
+            <button id="cancel-task" class="cancel-task-btn">Cancel</button>
         </div>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
+
 </html>
