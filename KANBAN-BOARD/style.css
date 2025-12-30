@@ -17,12 +17,14 @@ html {
 
 :root {
   --bg-color: #000000;
-  --delete-color: #ff4d4d;
+  --delete-color: #000000;
   --bg-task-color: #2a2a2a;
+  --bg-column-color: #1a1a1a;
   --bg-add-task-btn-color: #505050;
   --bg-cancel-task-btn-color: #830000;
-  --bg-button-color: #1a1a1a;
+  --bg-button-color: #000000;
   --primary-text-color: #f4f4f4;
+  --dashed-line-color: #189644;
 
   /* padding variables */
   --nav-padding: 15px 30px;
@@ -59,17 +61,17 @@ nav {
   justify-content: space-between;
   position: sticky;
   top: 0;
+  color: #189644;
   background-color: var(--bg-color);
 }
 
 nav button {
   background-color: var(--bg-button-color);
-  border: none;
-  outline: none;
   color: var(--primary-text-color);
   padding: var(--padding-m) var(--padding-l);
   cursor: pointer;
   border-radius: var(--border-radius-m);
+  border: 1.5px solid #4CAF50;
 }
 
 section {
@@ -81,7 +83,7 @@ section {
 }
 
 section .task-column {
-  background-color: var(--bg-button-color);
+  background-color: var(--bg-column-color);
   flex-grow: 1;
   width: 100%;
   padding: var(--padding-m);
@@ -93,7 +95,7 @@ section .task-column {
 }
 
 section .task-column.hover-over {
-    border: 2px dashed var(--primary-text-color);
+    border: 2px dashed var(--dashed-line-color);
     scale: 1.05;
 }
 
@@ -119,9 +121,10 @@ section .task-column .task button {
   cursor: pointer;
   padding: var(--padding-s) var(--padding-m);
   border-radius: var(--border-radius-s);
-  border: none;
-  outline: none;
+  color: white;
+  font-weight: 500;
   background-color: var(--delete-color);
+  border: 1.5px solid #4CAF50;
 }
 
 .modal {
