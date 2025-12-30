@@ -4,24 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kanban Board</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <main>
         <nav>
-            <div class="left">KANBAN</div>
-            <div class="right"><button id="toggle-modal">Add New Task</button></div>
+                <h3 class="left">KANBAN</h3>
+                <div class="right"><button id="toggle-modal">Add New Task</button></div>
         </nav>
+        
+        <hr>
 
         <section class="board">
 
             <div id="todo" class="task-column">
                 <div class="heading">
-                    <div class="left">To Do</div>
+                    <div class="left">TO DO</div>
                     <div class="right">Count</div>
                 </div>
+                <hr>
                 <!-- <div draggable="true" class="task">
                     <h2>Task 1</h2>
                     <p>Description for Task 1</p>
@@ -31,16 +34,18 @@
 
             <div id="progress" class="task-column">
                 <div class="heading">
-                    <div class="left">In Progress...</div>
+                    <div class="left">IN-PROGRESS...</div>
                     <div class="right">Count</div>
                 </div>
+                <hr>
             </div>
 
             <div id="done" class="task-column">
                 <div class="heading">
-                    <div class="left">Done</div>
+                    <div class="left">DONE</div>
                     <div class="right">Count</div>
                 </div>
+                <hr>
             </div>
 
         </section>
