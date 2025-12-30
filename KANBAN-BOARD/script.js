@@ -14,7 +14,7 @@ function addTask(title, desc, column) {
     div.setAttribute("draggable", "true");
 
     div.innerHTML = `
-            <h2>${title}</h2>
+            <h3>${title}</h3>
             <p>${desc}</p>
             <button>Delete</button>
             `
@@ -40,7 +40,7 @@ function updateTaskCount() {
         // Storage Logic
         tasksData[col.id] = Array.from(tasks).map(t => {
             return {
-                title: t.querySelector("h2").innerText,
+                title: t.querySelector("h3").innerText,
                 desc: t.querySelector("p").innerText
             }
         })
