@@ -3,11 +3,13 @@ let tasksData = {};
 const todo = document.querySelector("#todo");
 const progress = document.querySelector("#progress");
 const done = document.querySelector("#done");
-
 const tasks = document.querySelectorAll(".task");
+
+const columns = [todo, progress, done];
 
 let draggedElement = null;
 
+// Add task
 function addTask(title, desc, column) {
     const div = document.createElement("div");
     div.classList.add("task");
@@ -32,6 +34,7 @@ function addTask(title, desc, column) {
     return div;
 }
 
+// Task Updation
 function updateTaskCount() {
     columns.forEach(col => {
         const tasks = col.querySelectorAll(".task");
@@ -50,6 +53,7 @@ function updateTaskCount() {
     })
 }
 
+// If Data is already stored in LS then
 if (localStorage.getItem("tasks")) {
     const data = JSON.parse(localStorage.getItem("tasks"));
     console.log("DATA", data);
@@ -70,8 +74,6 @@ tasks.forEach(task => {
         draggedElement = task;
     })
 })
-
-const columns = [todo, progress, done];
 
 function addDrag(column) {
     column.addEventListener("dragenter", (e) => {
