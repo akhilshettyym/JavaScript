@@ -75,6 +75,7 @@ tasks.forEach(task => {
     })
 })
 
+// Drag logic
 function addDrag(column) {
     column.addEventListener("dragenter", (e) => {
         e.preventDefault();
@@ -108,14 +109,16 @@ function addDrag(column) {
     })
 }
 
-addDrag(todo);
-addDrag(progress);
-addDrag(done);
+// IFFY added
+(function() {
+    addDrag(todo);
+    addDrag(progress);
+    addDrag(done);
+})();
 
 // Modal active logic
 const toggleModalButton = document.querySelector("#toggle-modal");
 const modal = document.querySelector(".modal");
-
 toggleModalButton.addEventListener("click", () => {
     modal.classList.toggle("active")
 })
